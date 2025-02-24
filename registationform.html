@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .registation {
+
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+            width: 900px;
+            height: 800px;
+            border: 2px solid rgb(171, 170, 170);
+            top: 100px;
+            transform: translate(400px, 40px);
+            backdrop-filter: blur(6px);
+        }
+
+        .input {
+            transform: translate(250px, -290px);
+            height: 30px;
+            width: 300px;
+
+        }
+
+        .rinput {
+            transform: translate(400px, 30px);
+            font-size: 1.5pc;
+            border-radius: 10px;
+            background-color: rgb(242, 248, 248);
+            border: 2px solid rgb(190, 186, 186);
+            backdrop-filter: blur(6px);
+            transform: 5s;
+        }
+
+        .rinput:hover {
+            background-color: rgb(84, 239, 13);
+        }
+
+        .hadding {
+            transform: translate(10px, 10px);
+            color: rgb(7, 7, 7);
+        }
+
+        .button {
+
+            transform: translateX(-300px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registation" id="registationiformd">
+        <form action="submit.php" method="post">
+            <div class="hadding">
+
+                <label class="label">USERNAME</label><br><br><br><br>
+                <label class="label">PASSWORD</label><br><br><br><br>
+                <label class="label">CONFIRM PASSWORD</label><br><br><br><br>
+                <label class="label">NAME </label><br><br><br><br>
+                <label class="label">HIGH SCHOOL ROLL NO.</label><br><br><br><br>
+                <label class="label">CITY</label><br><br><br><br>
+                <label class="label">PHONE</label><br><br><br><br>
+                <label class="label">EMAIL</label><br><br><br><br>
+            </div>
+            <div class="input">
+                <input type="login" class="input" id="user_name" name="user_name"><br><br><br>
+
+                <input type="password" class="input" id="password" name="password" required
+                    minlength="8"><br><br><br>
+
+                <input type="password" class="input" id="conform_password" name="conform_password"
+                    required><br><br><br>
+
+                <input type="text" class="input" id="name" name="name" required><br><br><br>
+
+                <input type="number" class="input" id="high_school_rollnumber"
+                    name="high_school_rollnumber"><br><br><br>
+
+                <input type="city" class="input" id="city" name="city" required><br><br><br>
+
+                <input type="phone" class="input" id="phone_number" name="phone_number"><br><br><br>
+
+                <input type="email" class="input" id="email" name="email" required><br><br><br>
+            </div>
+
+            <button type="submit" class="rinput" id="back">Register</button>
+            <button class="previouspage" id="backid">BACK</button>
+        </form>
+    </div>
+</body>
+</html>
