@@ -1,0 +1,324 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+    
+}
+body{
+
+   background-image: url('') ;
+}
+.top-image {
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    display: flex;
+    width: 1500px;
+    height: 1000px;
+    /* border-radius: 50%;  */
+    border: 2px solid black;
+}
+.uwrapper
+{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 15px rgba(0,0,0, 10);
+    min-height:50vh;
+    width: 450px;
+    border: 2px solid ;
+    transform: translate(550px,50px);
+    /* backdrop-filter: blur(1px);
+     */
+    background-color: #e9e8dd;
+    color: black;
+    border-radius: 20px;
+    padding: 30px 40px;
+    
+}
+.uwrapper h1
+{
+    font-size: 36px;
+    text-align: center;
+    transform: translateY(-50px);
+}
+.uwrapper .ulogin
+{
+    background: transparent;
+}
+
+.ulogin input
+{
+    height: 45px;
+    width: 325px;
+    margin: 10px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border-color: #333;
+    transform: translateY(-50px);
+}
+.ulogin input::placeholder
+{
+    color: rgb(80, 79, 79);
+}
+.uremember input
+{
+    margin: 10px;
+    /* transform: translateY(-50px); */
+}
+
+.uwrapper .uremember 
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+    margin-top: 5px;
+    transform: translateY(-50px);
+}
+.uremember label input
+{
+    margin-right: 3px;
+}
+.uremember a
+{
+    color: rgb(251, 120, 120);
+    font-weight: 600;
+    text-decoration: none;
+    justify-content: right;
+}
+.uremember a:hover
+{
+    text-decoration: underline; 
+}
+.uwrapper .ubutton
+{
+    margin: 10px; 
+    padding: 1px;
+    width: 95%;
+    height: 45px;
+    background: rgb(249, 248, 248);
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translateY(-50px);
+}
+.uwrapper .ubutton:hover{
+    background-color:rgb(7, 222, 21);
+}
+.Ubutton{
+    margin: 10px; 
+    padding: 1px;
+    width: 25%;
+    height: 45px;
+    background-color: rgb(104, 212, 234);
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: not-allowed;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translateY(330px);
+    
+}
+
+.UAbutton{
+    margin: 10px; 
+    padding: 1px;
+    width: 25%;
+    height: 45px;
+    background-color: rgb(167, 117, 15);
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translate(170px,330px);
+}
+.UAbutton:hover{
+    background-color:rgb(244, 36, 13);
+
+}
+
+
+.uwrapper .uregister-link
+{
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 10px;
+    transform: translateY(-50px);
+}
+.uregister-link p a
+{
+    color: rgb(248, 134, 134);
+    text-decoration: none;
+    font-weight: 600;
+}
+.uregister-link p a:hover
+{
+    text-decoration: underline;
+} 
+
+
+
+
+
+.awrapper
+{   
+    display: none;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+    min-height: 50vh;
+    width: 450px;
+    border: 2px solid ;
+    transform: translate(550px,50px);
+    backdrop-filter: blur(6px);
+    color: black;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 30px 40px;
+}
+.awrapper h1
+{
+    font-size: 36px;
+    text-align: center;
+    transform: translateY(-70px);
+}
+.awrapper .ulogin
+{
+    background: transparent;
+
+}
+
+.alogin input
+{
+    height: 45px;
+    width: 325px;
+    margin: 20px;
+    padding: 0px;
+    text-align: center;
+    outline: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transform: translateY(-50px);
+}
+.alogin input::placeholder
+{
+    color: rgb(80, 79, 79);
+}
+.aremember input
+{
+    margin: 10px;
+    /* transform: translate(1px,-50px); */
+}
+
+.awrapper .aremember 
+{
+    display: flex;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+    margin-top: 5px;
+    transform: translate(20px,-50px);
+}
+.aremember label input
+{
+    margin-right: 3px;
+    
+}
+.aremember a
+{
+    color: rgb(255, 124, 124);
+    font-weight: 600;
+    text-decoration: none;
+    justify-content: right;
+    transform: translateX(10px);
+}
+.aremember a:hover
+{
+    text-decoration: underline; 
+}
+.awrapper .abutton
+{
+    margin: 10px; 
+    padding: 1px;
+    width: 95%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translateY(-60px);
+}
+.awrapper .abutton:hover{
+    background-color: rgb(54, 228, 54);
+} 
+.AUbutton{
+    margin: 10px; 
+    padding: 1px;
+    width: 25%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translate(10px,330px);
+}
+.Abutton{
+    margin: 10px; 
+    padding: 1px;
+    width: 25%;
+    height: 45px;
+    background-color: rgb(204, 253, 100);
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: not-allowed;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transform: 5s;
+    transform: translate(170px,330px);
+}
+
+.AUbutton:hover{
+    background-color:rgb(254, 15, 163);
+
+}
+
+
