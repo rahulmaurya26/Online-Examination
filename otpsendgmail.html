@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rverifygmail {
+            margin: 0px;
+            padding: 0px;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgb(23, 23, 23);
+            top: 100px;
+            transform: translate(400px, 40px);
+            backdrop-filter: blur(6px);
+        }
+
+        .rverifygmail h3 {
+            display: block;
+            color: rgb(26, 27, 27);
+            transform-origin: left;
+            font-size: 2em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+
+        .crbutton {
+            justify-items: center;
+            align-items: center;
+            margin: 10px;
+            padding: 1px;
+            width: 100px;
+            height: 45px;
+            background: white;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            size: 40px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translate(500px, 150px);
+            left: 40px;
+            transform: 5s;
+
+        }
+
+        .crbutton:hover {
+            background-color: aqua;
+        }
+
+        .fverifygmail {
+            display: none;
+            margin: 0px;
+            padding: 0px;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgb(174, 223, 249);
+            top: 100px;
+            transform: translate(400px, 40px);
+            backdrop-filter: blur(6px);
+        }
+
+        .fverifygmail h3 {
+            display: flex;
+            color: aliceblue;
+            transform-origin: left;
+            font-size: 2em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+
+        .fverifygmail p {
+            color: #fff;
+
+
+        }
+
+        .p pre {
+            color: #090909;
+            font-size: 1.2em;
+        }
+
+        .line {
+            border-top: 2px solid rgb(5, 5, 5);
+            width: 500px;
+            height: 20px;
+            margin: 20px 0;
+        }
+
+        .ginput {
+            transform: translate(50px, 50px);
+            width: 200px;
+            height: 50px;
+            border: 3px solid black;
+        }
+
+        .crbutton {
+            justify-items: center;
+            align-items: center;
+            margin: 10px;
+            padding: 1px;
+            width: 100px;
+            height: 45px;
+            background: white;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            size: 40px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translate(200px, 150px);
+            left: 40px;
+            transform: 5s;
+
+        }
+        .crbutton:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rverifygmail" id="rverifygmailid">
+        <div class="h">
+            <h3>VERIFY YOUR GMAIL</h3><br>
+            <div class="line"></div>
+            <div class="p">
+                <PRE>Please check your gmail for a text message with your
+    code. Your code is 8 characters in length.</PRE>
+            </div>
+            <div class="textbbox">
+                <input type="text" class="ginput" id="code" placeholder="Code" minlength="8" maxlength="8" required>
+            </div>
+            <div class="fbutton">
+                <button type="continue" class="crbutton" id="forgetid">Continue</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    window.onload = function() {
+    document.getElementById('code').focus();
+}
+</script>
+
+</html>
