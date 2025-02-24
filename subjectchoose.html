@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: 500PX;
+            background-color: rgb(218, 223, 224);
+        }
+
+        .tag {
+            margin: 0px;
+            padding: 0px;
+            position: fixed;
+            width: 1530px;
+            height: 50px;
+            background-color: rgb(103, 101, 101);
+            /* border-radius: 40px; */
+            transform: translateY(-20px);
+
+        }
+
+        .container {
+            /* position: fixed; */
+            width: 200px;
+            height: 200px;
+            background-color: #eeb1b1;
+            transform: translate(100px, 210px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+
+        }
+
+        .container1 {
+            /* position: fixed; */
+            width: 200px;
+            height: 200px;
+            background-color: #125acd;
+            transform: translate(400px, -10px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            text-align: center;
+
+            align-items: center;
+        }
+
+        .container2 {
+            /* position: fixed; */
+            width: 200px;
+            height: 200px;
+            background-color: #a775d9;
+            transform: translate(700px, -230px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+
+            align-items: center;
+        }
+
+        .container3 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #98db2c;
+            transform: translate(1000px, -450px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container4 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #ec7dcd;
+            transform: translate(1300px, -670px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container5 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #c1ceab;
+            transform: translate(100px, -600px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container6 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #945cfd;
+            transform: translate(400px, -820px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container7 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #7deca2;
+            transform: translate(700px, -1040px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container8 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #08aad7;
+            transform: translate(1000px, -1260px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container9 {
+            /* position: fixed; */
+            width: 200px;
+            height: 200px;
+            background-color: #dcfd08;
+            transform: translate(1300px, -1475px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container:hover {
+            box-shadow: 0px 3px 15px rgba(11, 115, 119, 20);
+        }
+
+        .container1:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container2:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container3:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container4:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container5:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container6:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container7:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container8:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container9:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container1 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container2 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container3 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container4 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container5 h1 {
+            font-size: 25px;
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container6 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container7 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container8 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container9 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .icon {
+            width: 25px;
+            height: 30px;
+            position: fixed;
+            font-size: 25px;
+            transform: translate(1320px, -2200px);
+            cursor: pointer;
+        }
+
+        .button {
+            position: fixed;
+            font-size: 30px;
+            transform: translate(1370px, -2205px);
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #5a5959;
+            color: #f8f4f4;
+            background: transparent;
+        }
+
+        .button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .button:hover {
+            background-color: #7dda8c;
+        }
+
+        .i {
+            color: aliceblue;
+        }
+
+        .home {
+            position: fixed;
+            font-size: 10px;
+            transform: translate(10px, -2200px);
+            cursor: pointer;
+            background-color: #5a5959;
+        }
+
+        .home a {
+            transform: translate(10px, 200px);
+            font-size: 25px;
+            /* background: transparent; */
+            text-decoration: none;
+            border-radius: 40px;
+            color: white;
+            /* background-color: #757678; */
+        }
+
+        .home a:hover {
+            color: rgb(70, 70, 70);
+        }
+
+        .container5 a {
+            text-decoration: none;
+        }
+
+        .tutorial {
+            position: fixed;
+            transform: translate(100px, -2220px);
+            cursor: pointer;
+        }
+
+        .subject {
+            transform: translate(100px, -2150px);
+            position: fixed;
+        }
+
+        .user_profile {
+            position: fixed;
+            transform: translate(1450px, -2203px);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .user_profile:hover {
+            background-color: #94d445;
+        }
+
+        .profile {
+            display: none;
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            border-color: #08aad7;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 5);
+            transform: translate(1300px, -2150px);
+            background-color: white;
+
+        }
+
+        .information {
+            transform: translateY(10px);
+        }
+
+        .label {
+            transform: translate(20px, 50px);
+            font-size: 30px;
+
+        }
+
+        .input {
+            transform: translate(270px, -125px);
+        }
+
+        .input input {
+            font-size: 30px;
+            border-color: black;
+            border-radius: 10px;
+        }
+
+        .update {
+            font-size: 20px;
+            transform: translate(300px, -30px);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .update:hover {
+            background-color: aqua;
+        }
+
+        .change {
+            display: none;
+            width: 700px;
+            height: 390px;
+            transform: translate(390px, -2250px);
+
+        }
+
+        .forms {
+            transform: translate(2px);
+            width: 700px;
+            box-shadow: 0px 3px 15px;
+            background-color: #e5eae4;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .close-btn {
+            transform: translate(650px);
+        }
+
+        .welcome {
+            width: 300px;
+            height: 80px;
+            position: fixed;
+            color: rgb(254, 251, 251);
+            transform: translate(180px, -2220px);
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body id="body1">
+    <div class="tag">
+    </div>
+    <div class="container" id="container">
+        <h1>C </h1>
+        <h1>LANGUAGE</h1>
+    </div>
+    <div class="container1">
+        <h1>JAVA</h1>
+    </div>
+    <div class="container2">
+        <h1>PYTHON</h1>
+    </div>
+    <div class="container3">
+        <h1>NODE JS</h1>
+    </div>
+    <div class="container4">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container5">
+        <a href="computerfundamental.html">
+            <h1>COMPUTER</h1>
+            <h1>FUNDAMENTAL</h1>
+        </a>
+    </div>
+    <div class="container6">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container7">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container8">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container9">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="icon" id="btn1">
+        <span><ion-icon name="moon-outline" class="i" id="iconid"></ion-icon> </span>
+    </div>
+    <div class="but">
+        <button class="button">
+            <a href="index.html"><ion-icon name="power-outline"></ion-icon></a>
+        </button>
+    </div>
+    <div>
+        <button class="home">
+            <a href="subjectchoose.html"><ion-icon name="home-outline"></ion-icon></a>
+        </button>
+    </div>
+
+    <button class="user_profile" id="user_profile"><ion-icon name="person-circle-outline"
+            style="font-size: 30px; color: rgb(24, 25, 25); "></ion-icon></button>
+    <div class="profile" id="profile">
+
+        <button class="change_password" style="border: none; cursor: pointer;" id="change_password">Change Password
+            <ion-icon name="pencil-outline" style="font-size: 20px; transform: translate(10px);"></ion-icon>
+        </button>
+
+        <button class="information" style="border: none; cursor:pointer;">
+            Update User Information
+        </button>
+
+    </div>
+    <div class="change" id="formid">
+        <form action="change.php" method="post" class="forms" id="change_form">
+            <div class="close-btn" id="backspace">
+                <ion-icon name="close-outline" style="font-size: 50px;"></ion-icon>
+            </div>
+            <div class="label">
+                <label for="">Old Password</label><br><br>
+                <label for="">New Password</label><br><br>
+                <label for="">confirm Password</label>
+            </div>
+            <div class="input">
+                <input type="password" placeholder="Old Password" name="password" required><br><br>
+                <input type="password" placeholder="New Password" name="new_password" required><br><br>
+                <input type="password" placeholder="confirm Password" name="conform_password" required><br><br>
+            </div>
+            <button type="submit" class="update">UPDATE</button>
+        </form>
+    </div>
+    <div class="welcome">
+        <h2>Welcome, <span id="username"></span>!</h2>
+
+     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        if (name) {
+            document.getElementById("username").textContent = decodeURIComponent(name);
+        }
+       </script>
+    </div>
+    <script>
+
+        const container = document.getElementById('container');
+        container.addEventListener("click", () => {
+            open('c_programming.html');
+
+        });
+    </script>
+    <script>
+        let btn = document.getElementById("iconid");
+        let body1 = document.getElementById("body1");
+        let currentmode = "rgb(218, 223, 224)";
+        btn.addEventListener("click", () => {
+            if (currentmode === "rgb(218, 223, 224)") {
+                body1.style.backgroundColor = "rgb(84, 83, 83)";
+                btn.style.color = "rgb(84, 8, 8)";
+                currentmode = "rgb(84, 83, 83)";
+            }
+            else if (currentmode === "rgb(84, 83, 83)") {
+                body1.style.backgroundColor = "rgb(218, 223, 224)";
+                currentmode = "rgb(218, 223, 224)";
+                btn.style.color = "white";
+            }
+
+        });
+    </script>
+    <script>
+        user_profile = document.getElementById('user_profile');
+        profile = document.getElementById('profile');
+        a = 0;
+        user_profile.addEventListener("click", () => {
+            if (a === 1) {
+                profile.style.display = "none";
+                a = 0;
+            }
+            else if (a == 0) {
+                profile.style.display = "block";
+                a = 1;
+            }
+        });
+    </script>
+    <script>
+        back = document.getElementById('backspace');
+        form = document.getElementById('formid');
+        change_password = document.getElementById('change_password');
+        change_password.addEventListener("click", () => {
+            form.style.display = "block";
+
+        });
+        back.addEventListener("click", () => {
+            form.style.display = "none";
+        });
+
+    </script>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
