@@ -68,26 +68,24 @@
         <div id="score" class="hidden"></div>
     </div>
     <script>
-        let questions = [
-            { question: "Who is the father of Computers?", options: ["James Gosling", "Charles Babbage", "Dennis Ritchie", "Bjarne Stroustrup"], answer: 1 },
-            { question: "Which of the following is the correct abbreviation of COMPUTER?", options: ["Commonly Occupied Machines Used in Technical and Educational Research", "Commonly Operated Machines Used in Technical and Environmental Research", "Commonly Oriented Machines Used in Technical and Educational Research", "Commonly Operated Machines Used in Technical and Educational Research"], answer: 3 },
-            { question: "What is the full form of CPU?", options: ["Computer Processing Unit", "Computer Principle Unit", "Central Processing Unit", "Control Processing Unit"], answer: 2 },
-            { question: "Which of the following language does the computer understand?", options: ["Computer understands only C Language", "Computer understands only Assembly Language", "Computer understands only Binary Language", "Computer understands only BASIC"], answer: 2 }
-        ];
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
+        let questions = [];
         let currentQuestionIndex = 0;
         let score = 0;
 
+        async function fetchQuestions() {
+            const response = await fetch('https://opentdb.com/api.php?amount=25&category=18&type=multiple');
+            const data = await response.json();
+            questions = data.results.map(q => ({
+                question: q.question,
+                options: [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5),
+                answer: q.correct_answer
+            }));
+            loadQuestion();
+        }
+
         function loadQuestion() {
             const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById('question').innerText = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+            document.getElementById('question').innerHTML = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
 
             const optionsContainer = document.getElementById('options');
             optionsContainer.innerHTML = '';
@@ -96,27 +94,29 @@
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 optionElement.innerText = option;
-                optionElement.onclick = () => selectOption(index);
+                optionElement.onclick = () => selectOption(optionElement, option);
                 optionsContainer.appendChild(optionElement);
             });
 
             document.getElementById('next-button').style.display = 'none';
         }
 
-        function selectOption(selectedIndex) {
+        function selectOption(element, selectedOption) {
             const currentQuestion = questions[currentQuestionIndex];
-            if (selectedIndex === currentQuestion.answer) {
-                score++;
-            }
-
-            document.getElementById('next-button').style.display = 'block';
             const options = document.getElementsByClassName('option');
             for (let i = 0; i < options.length; i++) {
                 options[i].style.pointerEvents = 'none';
-                if (i === currentQuestion.answer) {
+                if (options[i].innerText === currentQuestion.answer) {
                     options[i].style.backgroundColor = 'green';
+                } else if (options[i].innerText === selectedOption) {
+                    options[i].style.backgroundColor = 'red';
                 }
             }
+
+            if (selectedOption === currentQuestion.answer) {
+                score++;
+            }
+            document.getElementById('next-button').style.display = 'block';
         }
 
         function nextQuestion() {
@@ -135,8 +135,7 @@
             `;
         }
 
-        shuffleArray(questions);
-        loadQuestion();
+        fetchQuestions();
     </script>
 </body>
 </html>
