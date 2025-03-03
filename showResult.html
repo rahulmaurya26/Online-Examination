@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+</head>
+<body>
+
+    <form id="quizForm">
+        <div class="result-box">
+            <h1>Quiz Result</h1>
+            <table>
+                <tr>
+                    <td>Name Of The Student</td>
+                    <td><input type="text" id="student_name" name="student_name" readonly></td>
+                </tr>
+                <tr>
+                    <td>Subject Name</td>
+                    <td><input type="text" id="subject_name" name="subject_name" readonly></td>
+                </tr>
+                <tr>
+                    <td>Total Questions</td>
+                    <td><input type="number" id="total_questions" name="total_questions" readonly></td>
+                </tr>
+                <tr>
+                    <td>Attempt</td>
+                    <td><input type="number" id="attempted" name="attempted" readonly></td>
+                </tr>
+                <tr>
+                    <td>Correct</td>
+                    <td><input type="number" id="correct" name="correct" readonly></td>
+                </tr>
+                <tr>
+                    <td>Wrong</td>
+                    <td><input type="number" id="wrong" name="wrong" readonly></td>
+                </tr>
+                <tr>
+                    <td>Percentage</td>
+                    <td><input type="text" id="percentage" name="percentage" readonly></td>
+                </tr>
+                <tr>
+                    <td>Your Total Score</td>
+                    <td><input type="number" id="total_score" name="total_score" readonly></td>
+                </tr>
+            </table>
+            <!-- <button type="button" onclick="showResult()">Get Result</button> -->
+        </div>
+    </form>
+
+    <script>
+        function showResult() {
+            fetch("view_result.php")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // इनपुट फील्ड्स में डेटा भरें
+                        document.getElementById("student_name").value = data.student_name;
+                        document.getElementById("subject_name").value = data.subject_name;
+                        document.getElementById("total_questions").value = data.total_questions;
+                        document.getElementById("attempted").value = data.attempted;
+                        document.getElementById("correct").value = data.correct;
+                        document.getElementById("wrong").value = data.wrong;
+                        document.getElementById("percentage").value = data.percentage + "%";
+                        document.getElementById("total_score").value = data.total_score;
+                    } else {
+                        alert("No result found!");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+
+        // पेज लोड होते ही डेटा दिखाने के लिए
+        window.onload = showResult;
+    </script>
+
+</body>
+</html>
