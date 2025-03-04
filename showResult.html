@@ -3,80 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Result</title>
+    <title>Quiz Results</title>
 </head>
 <body>
 
-    <form id="quizForm">
-        <div class="result-box">
-            <h1>Quiz Result</h1>
-            <table>
-                <tr>
-                    <td>Name Of The Student</td>
-                    <td><input type="text" id="student_name" name="student_name" readonly></td>
-                </tr>
-                <tr>
-                    <td>Subject Name</td>
-                    <td><input type="text" id="subject_name" name="subject_name" readonly></td>
-                </tr>
-                <tr>
-                    <td>Total Questions</td>
-                    <td><input type="number" id="total_questions" name="total_questions" readonly></td>
-                </tr>
-                <tr>
-                    <td>Attempt</td>
-                    <td><input type="number" id="attempted" name="attempted" readonly></td>
-                </tr>
-                <tr>
-                    <td>Correct</td>
-                    <td><input type="number" id="correct" name="correct" readonly></td>
-                </tr>
-                <tr>
-                    <td>Wrong</td>
-                    <td><input type="number" id="wrong" name="wrong" readonly></td>
-                </tr>
-                <tr>
-                    <td>Percentage</td>
-                    <td><input type="text" id="percentage" name="percentage" readonly></td>
-                </tr>
-                <tr>
-                    <td>Your Total Score</td>
-                    <td><input type="number" id="total_score" name="total_score" readonly></td>
-                </tr>
-                <tr>
-                    <td>Quiz Date</td>
-                    <td><input type="text" id="quiz_date" name="quiz_date" readonly></td>
-                </tr>
-                <tr>
-                    <td>Quiz Time</td>
-                    <td><input type="text" id="quiz_time" name="quiz_time" readonly></td>
-                </tr>                
-            </table>
-        </div>
-    </form>
+    <h1>Quiz Results</h1>
+    <div id="resultsContainer"></div>
+
     <script>
-        function showResult() {
+        function showResults() {
             fetch("view_result.php")
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        document.getElementById("student_name").value = data.student_name;
-                        document.getElementById("subject_name").value = data.subject_name;
-                        document.getElementById("total_questions").value = data.total_questions;
-                        document.getElementById("attempted").value = data.attempted;
-                        document.getElementById("correct").value = data.correct;
-                        document.getElementById("wrong").value = data.wrong;
-                        document.getElementById("percentage").value = data.percentage + "%";
-                        document.getElementById("total_score").value = data.total_score;
-                        document.getElementById("quiz_date").value = data.quiz_date;
-                        document.getElementById("quiz_time").value = data.quiz_time;
-                    } else {
-                        alert("No result found!");
+                    if (!data.success) {
+                        alert(data.message);
+                        window.location.href = "login.html";
+                        return;
                     }
+                    
+                    let resultsContainer = document.getElementById("resultsContainer");
+                    resultsContainer.innerHTML = `<h2>Results for ${data.results[0].student_name}</h2>`;
+
+                    data.results.forEach((result, index) => {
+                        resultsContainer.innerHTML += `
+                            <div class="result-box">
+                                <h3>Test ${index + 1}</h3>
+                                <table border="1">
+                                    <tr><td>Subject Name</td><td>${result.subject_name}</td></tr>
+                                    <tr><td>Total Questions</td><td>${result.total_questions}</td></tr>
+                                    <tr><td>Attempt</td><td>${result.attempted}</td></tr>
+                                    <tr><td>Correct</td><td>${result.correct}</td></tr>
+                                    <tr><td>Wrong</td><td>${result.wrong}</td></tr>
+                                    <tr><td>Percentage</td><td>${result.percentage}%</td></tr>
+                                    <tr><td>Your Total Score</td><td>${result.total_score}</td></tr>
+                                    <tr><td>Quiz Date</td><td>${result.quiz_date}</td></tr>
+                                    <tr><td>Quiz Time</td><td>${result.quiz_time}</td></tr>
+                                </table>
+                            </div>
+                            <br>
+                        `;
+                    });
                 })
                 .catch(error => console.error("Error:", error));
-            }
-        window.onload = showResult;
+        }
+
+        window.onload = showResults;
     </script>
 
 </body>
