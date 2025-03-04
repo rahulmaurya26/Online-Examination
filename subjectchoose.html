@@ -253,6 +253,7 @@
             background-color: #5a5959;
             color: #f8f4f4;
             background: transparent;
+            border: #5a5959;
         }
 
         .button a {
@@ -261,7 +262,7 @@
         }
 
         .button:hover {
-            background-color: #7dda8c;
+            background-color: #f60314;
         }
 
         .i {
@@ -274,16 +275,17 @@
             transform: translate(10px, -2200px);
             cursor: pointer;
             background-color: #5a5959;
+            border: #5a5959;
         }
 
         .home a {
             transform: translate(10px, 200px);
             font-size: 25px;
-            /* background: transparent; */
+
             text-decoration: none;
             border-radius: 40px;
             color: white;
-            /* background-color: #757678; */
+
         }
 
         .home a:hover {
@@ -310,6 +312,7 @@
             transform: translate(1450px, -2203px);
             border-radius: 10px;
             cursor: pointer;
+            border: #5a5959;
         }
 
         .user_profile:hover {
@@ -353,6 +356,7 @@
             transform: translate(300px, -30px);
             border-radius: 10px;
             cursor: pointer;
+            border: #5a5959;
         }
 
         .update:hover {
@@ -361,9 +365,10 @@
 
         .change {
             display: none;
+            position: fixed;
             width: 700px;
             height: 390px;
-            transform: translate(390px, -2250px);
+            transform: translate(390px, -2000px);
 
         }
 
@@ -378,6 +383,12 @@
 
         .close-btn {
             transform: translate(650px);
+            border: #5a5959;
+
+        }
+
+        .close-btn:hover {
+            cursor: pointer;
         }
 
         .welcome {
@@ -387,6 +398,85 @@
             color: rgb(254, 251, 251);
             transform: translate(180px, -2220px);
             font-size: 20px;
+        }
+
+        .resultbtn {
+            position: fixed;
+            transform: translate(1140px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            border-radius: 10%;
+            font-size: 25px;
+            border: #5a5959;
+        }
+
+        .resultbtn:hover {
+            cursor: pointer;
+            background-color: #08f108;
+        }
+
+        .exercise {
+            height: 35px;
+            position: fixed;
+            transform: translate(950px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            border-radius: 10%;
+            font-size: 25px;
+
+        }
+
+        .ex {
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            font-size: 25px;
+            border: #5a5959;
+
+        }
+
+        .ex:hover {
+            cursor: pointer;
+
+        }
+
+        .question {
+            display: none;
+            text-align: left;
+            font-size: 30px;
+            position: fixed;
+            width: 230px;
+            height: 220px;
+            background-color: #f3f5f3;
+            transform: translate(900px, -2160px);
+        }
+
+        .q {
+            transform: translateX(10px);
+            border: #f3f5f3;
+            cursor: pointer;
+        }
+        .q a{
+            text-decoration: none;
+        }
+        .leaderboard {
+            position: fixed;
+            font-size: 25px;
+            transform: translate(650px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: #fbfefb;
+            border: #5a5959;
+
+
+        }
+        .results{
+            display: none;
+            text-align: left;
+            font-size: 30px;
+            position: fixed;
+            width: 230px;
+            height: 220px;
+            background-color: #f3f5f3;
+            transform: translate(1100px, -2160px);
         }
     </style>
 </head>
@@ -437,13 +527,14 @@
         </button>
     </div>
     <div>
-        <button class="home">
+
+        <button class="home" id="homeBtn">
             <a href="subjectchoose.html"><ion-icon name="home-outline"></ion-icon></a>
         </button>
     </div>
 
     <button class="user_profile" id="user_profile"><ion-icon name="person-circle-outline"
-            style="font-size: 30px; color: rgb(24, 25, 25); "></ion-icon></button>
+            style="font-size: 30px; color: rgb(24, 25, 25); "><ion-icon></button>
     <div class="profile" id="profile">
 
         <button class="change_password" style="border: none; cursor: pointer;" id="change_password">Change Password
@@ -473,16 +564,45 @@
             <button type="submit" class="update">UPDATE</button>
         </form>
     </div>
+
+    <div class="result">
+        <button id="result" class="resultbtn">RESULT</button>
+    </div>
+    <div class="exercise" id="exercise">
+        <button class="ex">EXERCISE</button>
+    </div>
+    <div class="question" id="question">
+        <button class="q"><a href="#">C LANGUAGE</a></button><br>
+        <button class="q"><a href="">JAVA</a></button><br>
+        <button class="q"><a href="">PYTHON</a></button><br>
+        <button class="q"><a href="">NODEJS</a></button><br>
+        <button class="q"><a href="computerfundametalquestion.html">COMPUTER FUNDAMETAL</a></button><br>
+        <button class="q"><a href="">REACTJS</a></button><br>
+    </div>
+    <div class="results" id="results">
+        <button class="q"><a href="#">C LANGUAGE</a></button><br>
+        <button class="q"><a href="">JAVA</a></button><br>
+        <button class="q"><a href="">PYTHON</a></button><br>
+        <button class="q"><a href="">NODEJS</a></button><br>
+        <button class="q"><a href="result.html">COMPUTER FUNDAMETAL</a></button><br>
+        <button class="q"><a href="">REACTJS</a></button><br>
+    </div>
+    <div class="leaderboards">
+        <button class="leaderboard">LEADERBOARD</button>
+    </div>
     <div class="welcome">
         <h2>Welcome, <span id="username"></span>!</h2>
-
-     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-        if (name) {
-            document.getElementById("username").textContent = decodeURIComponent(name);
-        }
-       </script>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            if (name) {
+                localStorage.setItem("username", name); 
+            }
+            const storedName = localStorage.getItem("username");
+            if (storedName) {
+                document.getElementById("username").textContent = storedName;
+            }
+        </script>
     </div>
     <script>
 
@@ -535,6 +655,52 @@
         });
         back.addEventListener("click", () => {
             form.style.display = "none";
+        });
+
+    </script>
+    <script>
+        exercise = document.getElementById('exercise');
+        question = document.getElementById('question');
+        let timeout;
+        exercise.addEventListener("mouseover", function () {
+            question.style.display = "block";
+        });
+        exercise.addEventListener("mouseout", function () {
+            question.style.display = "none";
+        });
+
+        question.addEventListener("mouseover", function () {
+            question.style.display = "block";
+        });
+        question.addEventListener("mouseout", function () {
+            question.style.display = "none";
+        });
+    </script>
+    <script>
+        resultbtn = document.getElementById('result');
+        result = document.getElementById('results');
+        resultbtn.addEventListener("mouseover", function () {
+            result.style.display = "block";
+        });
+        resultbtn.addEventListener("mouseout", function () {
+            result.style.display = "none";
+        });
+
+        result.addEventListener("mouseover", function () {
+            result.style.display = "block";
+        });
+        result.addEventListener("mouseout", function () {
+            result.style.display = "none";
+        });
+    </script>
+    <script>
+        document.getElementById("homeBtn").addEventListener("click", function () {
+            const storedName = localStorage.getItem("username");
+            if (storedName) {
+                window.location.href = `subjectchoose.html?name=${encodeURIComponent(storedName)}`;
+            } else {
+                window.location.href = "subjectchoose.html";
+            }
         });
 
     </script>
