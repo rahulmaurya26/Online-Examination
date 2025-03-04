@@ -43,18 +43,23 @@
                     <td>Your Total Score</td>
                     <td><input type="number" id="total_score" name="total_score" readonly></td>
                 </tr>
+                <tr>
+                    <td>Quiz Date</td>
+                    <td><input type="text" id="quiz_date" name="quiz_date" readonly></td>
+                </tr>
+                <tr>
+                    <td>Quiz Time</td>
+                    <td><input type="text" id="quiz_time" name="quiz_time" readonly></td>
+                </tr>                
             </table>
-            <!-- <button type="button" onclick="showResult()">Get Result</button> -->
         </div>
     </form>
-
     <script>
         function showResult() {
             fetch("view_result.php")
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // इनपुट फील्ड्स में डेटा भरें
                         document.getElementById("student_name").value = data.student_name;
                         document.getElementById("subject_name").value = data.subject_name;
                         document.getElementById("total_questions").value = data.total_questions;
@@ -63,14 +68,14 @@
                         document.getElementById("wrong").value = data.wrong;
                         document.getElementById("percentage").value = data.percentage + "%";
                         document.getElementById("total_score").value = data.total_score;
+                        document.getElementById("quiz_date").value = data.quiz_date;
+                        document.getElementById("quiz_time").value = data.quiz_time;
                     } else {
                         alert("No result found!");
                     }
                 })
                 .catch(error => console.error("Error:", error));
-        }
-
-        // पेज लोड होते ही डेटा दिखाने के लिए
+            }
         window.onload = showResult;
     </script>
 
