@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Language Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: auto;
+            background: yellow;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: red;
+        }
+
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #d0d0d0;
+        }
+
+        .correct {
+            background-color: green !important;
+            color: white;
+        }
+
+        .wrong {
+            background-color: red !important;
+            color: white;
+        }
+
+        #next-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show {
+            display: none;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>C Language Quiz</h1>
+        <div id="question"></div>
+        <div id="options"></div>
+        <button id="next-button" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <div class="show" id="result-box">
+        <h2>Quiz Result</h2>
+        <input type="text" id="studentName" readonly>
+        <input type="text" id="subjectName" readonly>
+        <input type="text" id="totalQuestions" readonly>
+        <input type="text" id="attempted" readonly>
+        <input type="text" id="correct" readonly>
+        <input type="text" id="wrong" readonly>
+        <input type="text" id="percentage" readonly>
+        <input type="text" id="score" readonly>
+    </div>
+    <div class="welcome">
+        <script>
+            let studentName = "";
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const storedName = localStorage.getItem("username");
+            studentName = storedName;
+
+        </script>
+    </div>
+    <script>
+        let allQuestions = [
+            { question: "What is the size of int in C?", options: ["2 bytes", "4 bytes", "8 bytes", "Depends on Compiler"], answer: "Depends on Compiler" },
+            { question: "Which symbol is used for single-line comments in C?", options: ["//", "/* */", "#", "--"], answer: "//" },
+            { question: "Which function is used to print in C?", options: ["print()", "printf()", "cout", "display()"], answer: "printf()" },
+            { question: "What is used to declare a constant in C?", options: ["const", "final", "constant", "define"], answer: "const" },
+            { question: "Which data type is used for decimal values in C?", options: ["int", "float", "char", "bool"], answer: "float" },
+            { question: "Which loop runs at least once in C?", options: ["for", "while", "do-while", "None"], answer: "do-while" },
+            { question: "Which header file is required for printf() function?", options: ["stdio.h", "stdlib.h", "conio.h", "math.h"], answer: "stdio.h" },
+            { question: "How do you declare a pointer in C?", options: ["*ptr", "ptr*", "&ptr", "ptr&"], answer: "*ptr" },
+            { question: "What is used to terminate a statement in C?", options: [";", ":", "}", "None"], answer: ";" },
+            { question: "Which operator is used to access a structure member?", options: [". (dot)", "-> (arrow)", "* (asterisk)", "& (ampersand)"], answer: "-> (arrow)" },
+            // Add 40 more C language questions here
+        ];
+        let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 2);
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let attempted = 0;
+        let correct = 0;
+        let wrong = 0;
+        let subjectName = "C Programming";
+        function loadQuestion() {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('question').innerHTML = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+            let optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                let optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerText = option;
+                optionElement.onclick = () => selectOption(optionElement, option);
+                optionsContainer.appendChild(optionElement);
+            });
+            document.getElementById('next-button').style.display = 'none';
+        }
+        function selectOption(element, selectedOption) {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
+            attempted++;
+            if (selectedOption === currentQuestion.answer) {
+                correct++;
+                score += 10;
+                element.classList.add('correct');
+            }
+            else {
+                wrong++;
+                element.classList.add('wrong');
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.innerText === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            document.getElementById('next-button').style.display = 'block';
+        }
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) loadQuestion();
+            else {
+                saveResult();
+                showResult();
+                
+            }
+        }
+        function saveResult() {
+            let percentage = (correct / questions.length) * 100;
+
+            fetch('save_result.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    student_name: studentName,
+                    subject_name: subjectName,
+                    total_questions: questions.length,
+                    attempted: attempted,
+                    correct: correct,
+                    wrong: wrong,
+                    percentage: percentage.toFixed(2),
+                    total_score: score
+                })
+            })
+        }
+        function showResult() {
+            let percentage = (correct / questions.length) * 100;
+            document.getElementById('studentName').value = "Student Name: " + studentName;
+            document.getElementById('subjectName').value = "Subject: " + subjectName;
+            document.getElementById('totalQuestions').value = "Total Questions: " + questions.length;
+            document.getElementById('attempted').value = "Attempted: " + attempted;
+            document.getElementById('correct').value = "Correct: " + correct;
+            document.getElementById('wrong').value = "Wrong: " + wrong;
+            document.getElementById('percentage').value = "Percentage: " + percentage.toFixed(2) + "%";
+            document.getElementById('score').value = "Score: " + score;
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.getElementById('result-box').style.display = 'block';
+
+        }
+        loadQuestion();
+    </script>
+</body>
+
+</html>
