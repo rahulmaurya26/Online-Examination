@@ -120,7 +120,7 @@
             { question: "How do you declare a pointer in C?", options: ["*ptr", "ptr*", "&ptr", "ptr&"], answer: "*ptr" },
             { question: "What is used to terminate a statement in C?", options: [";", ":", "}", "None"], answer: ";" },
             { question: "Which operator is used to access a structure member?", options: [". (dot)", "-> (arrow)", "* (asterisk)", "& (ampersand)"], answer: "-> (arrow)" },
-            // Add 40 more C language questions here
+            
         ];
         let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 2);
         let currentQuestionIndex = 0;
@@ -132,17 +132,24 @@
         function loadQuestion() {
             let currentQuestion = questions[currentQuestionIndex];
             document.getElementById('question').innerHTML = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+
             let optionsContainer = document.getElementById('options');
             optionsContainer.innerHTML = '';
-            currentQuestion.options.forEach(option => {
+
+
+            let shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
+
+            shuffledOptions.forEach(option => {
                 let optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 optionElement.innerText = option;
                 optionElement.onclick = () => selectOption(optionElement, option);
                 optionsContainer.appendChild(optionElement);
             });
+
             document.getElementById('next-button').style.display = 'none';
         }
+
         function selectOption(element, selectedOption) {
             let currentQuestion = questions[currentQuestionIndex];
             document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
@@ -169,7 +176,7 @@
             else {
                 saveResult();
                 showResult();
-                
+
             }
         }
         function saveResult() {
