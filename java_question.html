@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Language Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: auto;
+            background: yellow;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: red;
+        }
+
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #d0d0d0;
+        }
+
+        .correct {
+            background-color: green !important;
+            color: white;
+        }
+
+        .wrong {
+            background-color: red !important;
+            color: white;
+        }
+
+        #next-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show {
+            display: none;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>Java Language Quiz</h1>
+        <div id="question"></div>
+        <div id="options"></div>
+        <button id="next-button" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <div class="show" id="result-box">
+        <h2>Quiz Result</h2>
+        <input type="text" id="studentName" readonly>
+        <input type="text" id="subjectName" readonly>
+        <input type="text" id="totalQuestions" readonly>
+        <input type="text" id="attempted" readonly>
+        <input type="text" id="correct" readonly>
+        <input type="text" id="wrong" readonly>
+        <input type="text" id="percentage" readonly>
+        <input type="text" id="score" readonly>
+    </div>
+    <div class="welcome">
+        <script>
+            const storedName = localStorage.getItem("username");
+            const storedRoll = localStorage.getItem("roll_number");
+            studentName=storedName;
+            Roll_Number=storedRoll;
+        </script>
+    </div>
+    <script>
+        let allQuestions = 
+        [
+    { "question": "Who invented Java programming?", "options": ["Guido van Rossum", "James Gosling", "Dennis Ritchie", "Bjarne Stroustrup"], "answer": "James Gosling" },
+    { "question": "Which of the following is the entry point of a Java application?", "options": ["public static void start(String[] args)", "public void main(String[] args)", "public static void main(String[] args)", "void main(String args[])"], "answer": "public static void main(String[] args)" },
+    { "question": "Which of these keywords is used to declare a constant in Java?", "options": ["const", "final", "static", "immutable"], "answer": "final" },
+    { "question": "Which of the following is the correct way to create an object in Java?", "options": ["ClassName obj = new ClassName();", "ClassName obj = ClassName();", "new ClassName obj = new ClassName();", "None of the above"], "answer": "ClassName obj = new ClassName();" },
+    { "question": "Which of the following is a Java primitive data type?", "options": ["String", "Integer", "Boolean", "Object"], "answer": "Boolean" },
+    { "question": "Which method is used to start a thread in Java?", "options": ["start()", "init()", "run()", "execute()"], "answer": "start()" },
+    { "question": "Which of the following statements is true about constructors in Java?", "options": ["A constructor can have a return type", "A constructor can be overloaded", "A constructor can have a return type of void", "None of the above"], "answer": "A constructor can be overloaded" },
+    { "question": "What does the 'this' keyword refer to in Java?", "options": ["The current class", "The current object", "The current method", "None of the above"], "answer": "The current object" },
+    { "question": "Which method is used to compare two strings in Java?", "options": ["==", "compare()", "equals()", "compareTo()"], "answer": "equals()" },
+    { "question": "What is the size of an int in Java?", "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on the system"], "answer": "4 bytes" },
+    { "question": "Which of the following is used to handle exceptions in Java?", "options": ["throw", "throws", "try-catch", "None of the above"], "answer": "try-catch" },
+    { "question": "Which of the following class is the superclass of all classes in Java?", "options": ["Object", "String", "Class", "Exception"], "answer": "Object" },
+    { "question": "What is the default value of an instance variable in Java?", "options": ["null", "0", "false", "undefined"], "answer": "null" },
+    { "question": "Which of the following is a valid loop construct in Java?", "options": ["while", "do-while", "for", "All of the above"], "answer": "All of the above" },
+    { "question": "Which these keywords is used to prevent inheritance in Java?", "options": ["final", "static", "private", "abstract"], "answer": "final" },
+    { "question": "What does the 'super' keyword refer to in Java?", "options": ["The current class", "The superclass of the current class", "The current object", "None of the above"], "answer": "The superclass of the current class" },
+    { "question": "Which of the following is a valid declaration of a method in Java?", "options": ["public void method()", "void public method()", "public method void()", "void method public()"], "answer": "public void method()" },
+    { "question": "What is the main purpose of the final keyword in Java?", "options": ["To declare a constant", "To prevent inheritance", "To restrict method overriding", "All of the above"], "answer": "All of the above" },
+    { "question": "What will be the result of dividing an integer by 0 in Java?", "options": ["0", "Infinity", "RuntimeException", "ArithmeticException"], "answer": "ArithmeticException" },
+    { "question": "Which of the following is an example of an interface in Java?", "options": ["abstract class", "interface", "implements", "extends"], "answer": "interface" },
+    { "question": "Which class is used to read user input in Java?", "options": ["Scanner", "Reader", "BufferedReader", "FileReader"], "answer": "Scanner" },
+    { "question": "Which method is used to get the length of a string in Java?", "options": ["length()", "size()", "getLength()", "count()"], "answer": "length()" },
+    { "question": "Which of the following is used to create an array in Java?", "options": ["int[] arr = new int[10];", "int arr[] = new int(10);", "int[10] arr = new int[];", "int[] arr;"], "answer": "int[] arr = new int[10];" },
+    { "question": "Which method is used to convert a string to lowercase in Java?", "options": ["toLower()", "lowerCase()", "toLowerCase()", "convertToLower()"], "answer": "toLowerCase()" },
+    { "question": "Which of these access modifiers allows the most accessibility in Java?", "options": ["private", "protected", "default", "public"], "answer": "public" },
+    { "question": "What is the result of the following expression in Java: 3 + 2 * 2?", "options": ["7", "10", "12", "9"], "answer": "7" },
+    { "question": "What does the term 'Java Virtual Machine' (JVM) refer to?", "options": ["A hardware device for running Java programs", "A virtual environment to execute Java programs", "A Java interpreter", "None of the above"], "answer": "A virtual environment to execute Java programs" },
+    { "question": "Which method is used to remove an element from an ArrayList in Java?", "options": ["removeElement()", "delete()", "remove()", "pop()"], "answer": "remove()" },
+    { "question": "Which of the following is the correct syntax for implementing an interface in Java?", "options": ["class MyClass implements MyInterface {}", "class MyClass extends MyInterface {}", "class MyClass interface MyInterface {}", "class MyClass : MyInterface {}"], "answer": "class MyClass implements MyInterface {}" },
+    { "question": "Which type of collection is unordered and allows duplicate elements in Java?", "options": ["Set", "List", "Map", "Queue"], "answer": "List" },
+    { "question": "Which class is part of the java.util package?", "options": ["ArrayList", "String", "Thread", "None of the above"], "answer": "ArrayList" },
+    { "question": "What is the default size of an ArrayList in Java?", "options": ["10", "0", "5", "Depends on the number of elements"], "answer": "10" },
+    { "question": "Which class is used for basic file operations in Java?", "options": ["File", "FileReader", "BufferedReader", "FileInputStream"], "answer": "File" },
+    { "question": "Which of the following is not a valid method for a Thread in Java?", "options": ["run()", "sleep()", "start()", "get()"], "answer": "get()" },
+    { "question": "Which of the following interfaces does the List collection implement?", "options": ["Queue", "Iterable", "Set", "None"], "answer": "Iterable" },
+    { "question": "What will happen if you try to divide by 0 in Java?", "options": ["It will throw ArithmeticException", "It will return Infinity", "It will return NaN", "None of the above"], "answer": "It will throw ArithmeticException" },
+    { "question": "Which method in Java is used to remove an element from a HashMap?", "options": ["removeElement()", "delete()", "remove()", "clear()"], "answer": "remove()" },
+    { "question": "Which of these is not an access modifier in Java?", "options": ["public", "protected", "private", "abstract"], "answer": "abstract" },
+    { "question": "Which of these is used to compare two strings in Java?", "options": ["==", "equals()", "compare()", "compareTo()"], "answer": "equals()" },
+    { "question": "Which of the following is true about 'String' objects in Java?", "options": ["Strings are mutable", "Strings are immutable", "Strings can be modified", "Strings are not objects"], "answer": "Strings are immutable" },
+    { "question": "Which of the following classes does not implement the Cloneable interface in Java?", "options": ["ArrayList", "String", "Object", "None of the above"], "answer": "String" },
+    { "question": "Which of the following exceptions is thrown when an array index is out of bounds?", "options": ["ArrayIndexOutOfBoundsException", "NullPointerException", "IllegalArgumentException", "IOException"], "answer": "ArrayIndexOutOfBoundsException" },
+    { "question": "Which method is used to start a thread in Java?", "options": ["start()", "run()", "execute()", "begin()"], "answer": "start()" },
+    { "question": "Which of these operators is used to compare two objects for equality in Java?", "options": ["=", "==", "equals()", "is()"], "answer": "equals()" },
+    { "question": "What is the default value of a reference variable in Java?", "options": ["null", "0", "false", "undefined"], "answer": "null" },
+    { "question": "Which of these data types is not a primitive data type in Java?", "options": ["int", "boolean", "char", "String"], "answer": "String" },
+    { "question": "Which of these statements is used to return a value from a method?", "options": ["return", "exit", "yield", "break"], "answer": "return" },
+
+        ];
+        let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 2);
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let attempted = 0;
+        let correct = 0;
+        let wrong = 0;
+        let subjectName = "JAVA LANGUAGE";
+        function loadQuestion() {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('question').innerHTML = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+
+            let optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+
+            let shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
+
+            shuffledOptions.forEach(option => {
+                let optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerText = option;
+                optionElement.onclick = () => selectOption(optionElement, option);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            document.getElementById('next-button').style.display = 'none';
+        }
+
+        function selectOption(element, selectedOption) {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
+            attempted++;
+            if (selectedOption === currentQuestion.answer) {
+                correct++;
+                score += 10;
+                element.classList.add('correct');
+            }
+            else {
+                wrong++;
+                element.classList.add('wrong');
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.innerText === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            document.getElementById('next-button').style.display = 'block';
+        }
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) loadQuestion();
+            else {
+                saveResult();
+                showResult();
+
+            }
+        }
+        function saveResult() {
+            let percentage = (correct / questions.length) * 100;
+
+            fetch('save_result.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    student_name: studentName,
+                    subject_name: subjectName,
+                    total_questions: questions.length,
+                    attempted: attempted,
+                    correct: correct,
+                    wrong: wrong,
+                    percentage: percentage.toFixed(2),
+                    total_score: score,
+                    Roll_Number:Roll_Number
+                })
+            })
+        }
+        function showResult() {
+            let percentage = (correct / questions.length) * 100;
+            document.getElementById('studentName').value = "Student Name: " + studentName;
+            document.getElementById('subjectName').value = "Subject: " + subjectName;
+            document.getElementById('totalQuestions').value = "Total Questions: " + questions.length;
+            document.getElementById('attempted').value = "Attempted: " + attempted;
+            document.getElementById('correct').value = "Correct: " + correct;
+            document.getElementById('wrong').value = "Wrong: " + wrong;
+            document.getElementById('percentage').value = "Percentage: " + percentage.toFixed(2) + "%";
+            document.getElementById('score').value = "Score: " + score;
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.getElementById('result-box').style.display = 'block';
+
+        }
+        loadQuestion();
+    </script>
+</body>
+
+</html>
