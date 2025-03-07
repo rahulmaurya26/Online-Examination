@@ -100,11 +100,10 @@
     </div>
     <div class="welcome">
         <script>
-            let studentName = "";
-            const urlParams = new URLSearchParams(window.location.search);
-            const name = urlParams.get('name');
             const storedName = localStorage.getItem("username");
-            studentName = storedName;
+            const storedRoll = localStorage.getItem("roll_number");
+            studentName=storedName;
+            Roll_Number=storedRoll;
         </script>
     </div>
     <script>
@@ -157,7 +156,7 @@
             { question: "Which function is used to convert lowercase to uppercase in C?", options: ["toupper()", "touppercase()", "upper()", "toupperstr()"], answer: "toupper()" }
         ];
 
-        let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 2);
+        let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 25);
         let currentQuestionIndex = 0;
         let score = 0;
         let attempted = 0;
@@ -207,7 +206,9 @@
         }
         function nextQuestion() {
             currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) loadQuestion();
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            }
             else {
                 saveResult();
                 showResult();
@@ -228,7 +229,8 @@
                     correct: correct,
                     wrong: wrong,
                     percentage: percentage.toFixed(2),
-                    total_score: score
+                    total_score: score,
+                    Roll_Number: Roll_Number
                 })
             })
         }
