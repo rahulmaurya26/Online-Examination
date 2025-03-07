@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css">
+</head>
+
+<body class="bg-light">
+    <form action="" method="post">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 mt-5 pt-5">
+                    <div class="row z-depth-3">
+                        <div class="col-sm-4 bg-info reunded-left">
+                            <div class="card-block text-center text-white">
+                                <i class="fas fa-user-tie fa-7x mt-5"></i>
+                                <h2 class="font-weight-bold mt-4" name="user_name" id="user_name"></h2>
+                                <p id="name"></p>
+                                <i class="far fa-edit fa-2x mb-4" style="cursor: pointer;"onclick="sendData()"></i>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-8 bg-white rounded-right">
+                            <i class="fas fa-times fa-2x text-danger"
+                                style="position: absolute; top: 10px; right: 10px; cursor: pointer;"
+                                onclick="closeForm()"></i>
+                            <h3 class="mt-3 text-center">Information</h3>
+                            <hr class="badge-primary mt-0 w-25">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Email</p>
+                                    <h6 class="text-muted" name="emal" id="email"></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Phone</p>
+                                    <h6 class="text-muted" name="phone_number" id="phone_number"></h6>
+                                </div>
+                            </div>
+                            <!-- <h4 class="mt-3">Subjects</h4> -->
+                            <hr class="bg-primary">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Roll Number</p>
+                                    <h6 class="text-muted" name="Roll_Number" id="Roll_Number"></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Director</p>
+                                    <h6 class="text-muted">Mohd Tanzeem</h6>
+                                    <h6 class="text-muted">Rahul Maurya</h6>
+                                    <h6 class="text-muted">Rahul Kumar</h6>
+                                </div>
+                                <div class="welcome">
+                                    <script>
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        const storedRoll = localStorage.getItem("roll_number");
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+</body>
+<script>
+    function closeForm() {
+        window.close();
+    }
+</script>
+<script>
+    function fetchUserData() {
+        if (!storedRoll) {
+            alert("Roll Number not found in local storage!");
+            return;
+        }
+        fetch("fetch_name.php")
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched Data:", data);
+
+                if (data.success) {
+                    document.getElementById('user_name').innerText = data.user_name;
+                    document.getElementById('name').innerText = data.name;
+                    document.getElementById('email').innerText = data.email;
+                    document.getElementById('phone_number').innerText = data.phone_number;
+                    document.getElementById('Roll_Number').innerText = data.Roll_Number;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error("Error fetching user data:", error));
+    }
+
+    window.onload = fetchUserData;
+</script>
+<script>
+    function sendData() {
+    const rollNumber = document.getElementById("Roll_Number").innerText.trim();
+    
+    if (rollNumber === "") {
+        alert("Roll Number is empty!");
+        return;
+    }
+    localStorage.setItem("Roll_Number", rollNumber);
+    window.location.href = "update_information.html?Roll_Number=" + encodeURIComponent(rollNumber);
+}
+</script>
+</html>
