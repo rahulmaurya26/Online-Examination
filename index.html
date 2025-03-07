@@ -10,37 +10,36 @@
 </head>
 
 <body>
-
-    <div class="container"> 
-
-        <!-- <img src="https://images.unsplash.com/photo-1481988535861-271139e06469?q=80&w=1790&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Image" class="top-image"> -->
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1481988535861-271139e06469?q=80&w=1790&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Image" class="top-image">
     </div>
     <div class="uwrapper" id="user_id">
         <form id="uform_id" action="user.php" method="post">
-            <button type="ulogin" class="Ubutton">USER</button>
-            <button type="button" class="UAbutton" id="open_second_form">ADMIN</button>
+            <button type="ulogin" class="Ubutton" disabled>USER</button>
+            <button type="button" class="UAbutton" id="first_form">ADMIN</button>
             <h1>Login</h1>
             <div class="ulogin">
-                <input type="text" placeholder="Username" name="user_name" ><br>
-                <input type="password" placeholder="password" name="password" >
+                <input type="text" placeholder="Username" name="user_name" required><br>
+                <input type="password" placeholder="password" name="password" required>
             </div>
             <div class="uremember">
                 <label><input type="checkbox">Remember Me</input>
-                    <a href="#" id="uforgetid">Forget passward</a></label>
+                    <a href="forgetpassword.html" target="_blank">Forget passward</a>
+                </label>
             </div>
-            <button type="submit" class="ubutton" id="userbutton" name="">Login</button>
+            <button type="submit" class="ubutton" id="ubutton">Login</button>
+
             <div class="uregister-link">
-                <p>Don't have an account <a href="#" id="registationid">Register</a></p>
+                <p>Don't have an account <a href="registation.html" id="registationid" target="_blank">Register</a></p>
             </div>
         </form>
-        
+
     </div>
     <div class="awrapper" id="admin_id">
         <form id="aform_id">
-            <button type="ulogin" class="AUbutton" id="open_second_form1">USER</button>
-            <button type="alogin" class="Abutton">ADMIN</button>
-
+            <button type="ulogin" class="AUbutton" id="second_form">USER</button>
+            <button type="alogin" class="Abutton" disabled>ADMIN</button>
             <h1>Login</h1>
             <div class="alogin">
                 <input type="text" placeholder="Username" required><br>
@@ -52,90 +51,18 @@
                 </label>
             </div>
             <button type="login" class="abutton">Login</button>
-
         </form>
     </div>
-    <div class="registation" id="registationiformd">
-        <form action="submit.php" method="post">
-            <div class="hadding">
-
-                <label class="label">USERNAME</label><br><br><br><br>
-                <label class="label">PASSWORD</label><br><br><br><br>
-                <label class="label">CONFIRM PASSWORD</label><br><br><br><br>
-                <label class="label">NAME </label><br><br><br><br>
-                <label class="label">HIGH SCHOOL ROLL NO.</label><br><br><br><br>
-                <label class="label">CITY</label><br><br><br><br>
-                <label class="label">PHONE</label><br><br><br><br>
-                <label class="label">EMAIL</label><br><br><br><br>
-            </div>
-            <div class="input">
-                <input type="login" class="input" id="user_name" name="user_name"><br><br><br><br>
-                <input type="password" class="input" id="password" name="password" required
-                    minlength="8"><br><br><br><br>
-                <input type="password" class="input" id="conform_password" name="conform_password"
-                    required><br><br><br><br>
-                <input type="text" class="input" id="name" name="name" required><br><br><br><br>
-                <input type="number" class="input" id="high_school_rollnumber"
-                    name="high_school_rollnumber"><br><br><br><br>
-                <input type="city" class="input" id="city" name="city" required><br><br><br><br>
-                <input type="phone" class="input" id="phone_number" name="phone_number"><br><br><br><br>
-                <input type="email" class="input" id="email" name="email" required><br><br><br><br>
-                
-            </div>
-
-            <button type="submit" class="rinput" id="back">Register</button>
-            <button class="previouspage" id="backid">BACK</button>
-        </form>
+    <div class="loader" id="loader">
     </div>
-    <div class="forget" id="forgetform">
-        <form action="forget.php" method="post">
-            <div class="fhadding">
-                <label class="flabel">PASSWORD</label><br><br><br><br>
-                <label class="flabel">CONFIRM PASSWORD</label><br><br><br><br>
-                <label class="flabel">high_school_Rollnumber</label><br><br><br><br>
-            </div>
-            <div class="finput">
-                <input type="password" class="finput" id="passwordid" name="password"  minlength="8" required><br><br><br><br>
-                <input type="password" class="finput" id="cpasswordid" name="conform_password" minlength="8" required><br><br><br><br>
-                <input type="number" class="finput" id="femailid" name="high_school_rollnumber" required><br><br><br><br>
-            </div>
-             <input type="submit" class="fbutton">
-        </form>
-    </div>
-    <div class="rverifygmail" id="rverifygmailid">
-        <div class="h">
-            <h3>VERIFY YOUR GMAIL</h3><br>
-            <div class="line"></div>
-            <div class="p">
-                <PRE>Please check your gmail for a text message with your
-             code. Your code is 8 characters in length.</PRE>
-            </div>
-            <div class="textbbox">
-                <input type="text" class="ginput" id="code" placeholder="Code" minlength="8" maxlength="8" required>
-            </div>
-            <div class="fbutton">
-                <button type="continue" class="crbutton" id="forgetid">Continue</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="fverifygmail" id="fverifygmailid">
-        <div class="h">
-            <h3>VERIFY YOUR GMAIL</h3><br>
-            <div class="line"></div>
-            <div class="p">
-                <PRE>Please check your gmail for a text message with your
-             code. Your code is 8 characters in length.</PRE>
-            </div>
-            <div class="textbbox">
-                <input type="text" class="ginput" id="code" placeholder="Code" minlength="8" maxlength="8" required>
-            </div>
-            <div class="fbutton">
-                <button type="continue" class="crbutton" id="forgetid">Continue</button>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
 </body>
-
+<script>
+    document.getElementById("user_id").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+            document.querySelector(".ubutton").click();
+        }
+    });
+</script>
+<script src="script.js"></script>
 </html>
