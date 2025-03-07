@@ -13,11 +13,10 @@ if (!isset($_SESSION["name"])) {
     die(json_encode(["success" => false, "message" => "Please login first!"]));
 }
 
-$student_name = $_SESSION["name"];
-
-$sql = "SELECT * FROM quiz_results WHERE student_name = ? ORDER BY id DESC";
+$Roll_Number = $_POST['Roll_Number'];
+$sql = "SELECT * FROM quiz_results WHERE Roll_Number = ? ORDER BY id ASC";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $student_name);
+$stmt->bind_param("i", $Roll_Number);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -34,14 +33,16 @@ if ($result->num_rows > 0) {
             "percentage" => $row["percentage"],
             "total_score" => $row["total_score"],
             "quiz_date" => $row["quiz_date"],
-            "quiz_time" => $row["quiz_time"]
+            "quiz_time" => $row["quiz_time"],
+            "Roll_Number" => $row["Roll_Number"]
         ];
     }
     echo json_encode(["success" => true, "results" => $results]);
-} else {
+} 
+else {
     echo json_encode(["success" => false, "message" => "No result found"]);
+    
 }
-
 $stmt->close();
 $conn->close();
 ?>
