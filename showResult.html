@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 
@@ -26,7 +26,9 @@
             margin-top: 20px;
         }
 
-        .result-box table, .result-box th, .result-box td {
+        .result-box table,
+        .result-box th,
+        .result-box td {
             border: 1px solid black;
             padding: 10px;
             text-align: left;
@@ -38,37 +40,44 @@
             border-radius: 10px;
             background: #e9e8dd;
             text-align: center;
-            transform: translate(600px,100px);
+            transform: translate(600px, 100px);
         }
 
         .hidden {
             display: none;
-            transform: translate(700px,10px);
+            transform: translate(700px, 10px);
 
         }
-        
     </style>
 </head>
 
 <body>
     <div class="text" id="tex">
         <form action="view_result.php" method="post">
-             <a href="subjectchoose.html"></a>
-             <i class="fas fa-times fa-2x text-danger"  style="cursor: pointer; transform: translateX(230px);" onclick="closeOpenedWindow()"></i>
-            <h1 style="transform: translateX(-30px);">Enter Roll Number <button style="font-size: 20px; text-decoration: none; border: none;"><a href="user_information.html" style="text-decoration: none;" target="_blank">Where</a></button></h1>
-            
-            <input type="text" minlength="10" maxlength="10" onkeypress="return isNumberKey(event)" oninput="validateInput()" name="Roll_Number"  style="transform: translateY(30px);">
-            <button type="button" id="get" class="btn btn-primary" onclick="showResults()" style="transform: translate(-100px,200px);" disabled>Get Result</button>
+            <a href="subjectchoose.html"></a>
+            <i class="fas fa-times fa-2x text-danger" style="cursor: pointer; transform: translateX(230px);"
+                onclick="closeOpenedWindow()"></i>
+            <h1 style="transform: translateX(-30px);">Enter Roll Number <button
+                    style="font-size: 20px; text-decoration: none; border: none;"><a href="user_information.html"
+                        style="text-decoration: none;" target="_blank">Where</a></button></h1>
+
+            <input type="text" minlength="10" maxlength="10" onkeypress="return isNumberKey(event)"
+                oninput="validateInput()" name="Roll_Number" style="transform: translateY(30px);">
+            <button type="button" id="get" class="btn btn-primary" onclick="showResults()"
+                style="transform: translate(-100px,200px);" disabled>Get Result</button>
         </form>
     </div>
 
     <h1 id="qu" class="hidden" style="transform: translate(700px,10px);">Quiz Results</h1>
-    
+    <i class="fas fa-times fa-2x text-danger" id="cl"
+        style="cursor: pointer; position: fixed; display: none; transform: translateX(1040px);"
+        onclick="closeOpenedWindow()"></i>
+    <button onclick="generatePDF()" id="pdf" class="hidden btn btn-success"
+        style="transform: translate(1000px,40px); position: fixed;">Download PDF</button>
+
     <div id="resultsContainer" class="content">
 
     </div>
-    <i class="fas fa-times fa-2x text-danger" id="cl" style="cursor: pointer; transform: translate(1100px,-120px); position: fixed; display: none;" onclick="closeOpenedWindow()"></i>
-    <button onclick="generatePDF()" id="pdf" class="hidden btn btn-success" style="transform: translate(1000px,-100px); position: fixed;">Download PDF</button>
 
     <script>
         function isNumberKey(evt) {
@@ -84,10 +93,10 @@
         let resultsData = [];
 
         function showResults() {
-            document.getElementById('tex').style.display="none";
-            document.getElementById('cl').style.display="block";
+            document.getElementById('tex').style.display = "none";
+            document.getElementById('cl').style.display = "block";
             let rollNumber = document.querySelector("input[name='Roll_Number']").value;
-            
+
             fetch("view_result.php", {
                 method: "POST",
                 headers: {
@@ -95,24 +104,25 @@
                 },
                 body: "Roll_Number=" + encodeURIComponent(rollNumber)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (!data.success) {
-                    alert(data.message);
-                    window.location.href = "subjectchoose.html";
-                    return;
-                }
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert(data.message);
+                        window.location.href = "subjectchoose.html";
+                        return;
+                    }
 
-                document.getElementById('qu').classList.remove('hidden');
-                document.getElementById('pdf').classList.remove('hidden');
+                    document.getElementById('qu').classList.remove('hidden');
+                    document.getElementById('pdf').classList.remove('hidden');
 
-                let resultsContainer = document.getElementById("resultsContainer");
-                resultsContainer.innerHTML = `<h2>Results for ${data.results[0].student_name}</h2>`;
+                    let resultsContainer = document.getElementById("resultsContainer");
+                    resultsContainer.innerHTML = `<h2>Results for ${data.results[0].student_name}</h2>`;
 
-                let resultHTML = `
+                    let resultHTML = `
                     <table border="5">
                         <tr>
                             <th>Test</th>
+                            <th>student_name</th>
                             <th>Subject</th>
                             <th>Total Questions</th>
                             <th>Attempted</th>
@@ -124,11 +134,12 @@
                             <th>Time</th>
                         </tr>`;
 
-                resultsData = [];
-                data.results.forEach((result, index) => {
-                    resultHTML += `
+                    resultsData = [];
+                    data.results.forEach((result, index) => {
+                        resultHTML += `
                         <tr>
                             <td>${index + 1}</td>
+                            <td>${result.student_name}</td>
                             <td>${result.subject_name}</td>
                             <td>${result.total_questions}</td>
                             <td>${result.attempted}</td>
@@ -139,55 +150,58 @@
                             <td>${result.quiz_date}</td>
                             <td>${result.quiz_time}</td>
                         </tr>`;
+                        resultsData.push([
+                            index + 1,
+                            result.student_name,
+                            result.subject_name,
+                            result.total_questions,
+                            result.attempted,
+                            result.correct,
+                            result.wrong,
+                            result.percentage + "%",
+                            result.total_score,
+                            result.quiz_date,
+                            result.quiz_time
+                        ]);
+                    });
 
-                    resultsData.push([
-                        index + 1,
-                        result.subject_name,
-                        result.total_questions,
-                        result.attempted,
-                        result.correct,
-                        result.wrong,
-                        result.percentage + "%",
-                        result.total_score,
-                        result.quiz_date,
-                        result.quiz_time
-                    ]);
-                });
-
-                resultHTML += `</table>`;
-                resultsContainer.innerHTML += resultHTML;
-            })
-            .catch(error => console.error("Error:", error));
+                    resultHTML += `</table>`;
+                    resultsContainer.innerHTML += resultHTML;
+                })
+                .catch(error => console.error("Error:", error));
         }
 
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            doc.setFontSize(16);
+            doc.setFontSize(10);
             doc.text("Quiz Results", 14, 15);
 
             doc.autoTable({
                 startY: 25,
-                head: [["Test", "Subject", "Total Qs", "Attempted", "Correct", "Wrong", "Percentage", "Score", "Date", "Time"]],
+                head: [["Test", "Name", "Subject", "Total Qs", "Attempted", "Correct", "Wrong", "Percentage", "Score", "Date", "Time"]],
                 body: resultsData
             });
 
-            doc.save("quiz_results.pdf");
+            // let fileName = resultsData.student_name ? resultsData.student_name + ".pdf" : "quiz_results.pdf";
+
+            doc.save(resultsData.student_name + ".pdf");
         }
 
     </script>
     <script>
         let myWindow;
-        
+
         function openWindow() {
             myWindow = window.open("result.html", "_blank",);
         }
-        
+
         function closeOpenedWindow() {
             window.close();
         }
     </script>
 
 </body>
+
 </html>
