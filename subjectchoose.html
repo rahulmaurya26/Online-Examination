@@ -4,204 +4,751 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Results</title>
+    <title>Document</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
-
     <style>
-        .content {
-            width: 500px;
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: 500PX;
+            background-color: rgb(18, 207, 245);
+        }
+
+        .tag {
+            margin: 0px;
+            padding: 0px;
+            position: fixed;
+            width: 1530px;
+            height: 50px;
+            background-color: rgb(103, 101, 101);
+
+            transform: translateY(-20px);
+
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            background-color: #eeb1b1;
+            transform: translate(100px, 210px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+
+        }
+
+        .container1 {
+            width: 200px;
+            height: 200px;
+            background-color: #125acd;
+            transform: translate(400px, -10px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
             text-align: center;
-            margin: auto;
-            transform: translateY(100px);
+            align-items: center;
         }
 
-        .result-box table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .container2 {
+            /* position: fixed; */
+            width: 200px;
+            height: 200px;
+            background-color: #a775d9;
+            transform: translate(700px, -230px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+
+            align-items: center;
         }
 
-        .result-box table,
-        .result-box th,
-        .result-box td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
+        .container3 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #98db2c;
+            transform: translate(1000px, -450px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
         }
 
-        .text {
-            width: 500px;
-            height: 400px;
+        .container4 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #ec7dcd;
+            transform: translate(1300px, -670px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container5 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #c1ceab;
+            transform: translate(100px, -600px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container6 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #945cfd;
+            transform: translate(400px, -820px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container7 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #7deca2;
+            transform: translate(700px, -1040px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container8 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #08aad7;
+            transform: translate(1000px, -1260px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container9 {
+            width: 200px;
+            height: 200px;
+            background-color: #dcfd08;
+            transform: translate(1300px, -1475px);
+            border-radius: 20px;
+            cursor: pointer;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .container:hover {
+            box-shadow: 0px 3px 15px rgba(11, 115, 119, 20);
+        }
+
+        .container1:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container2:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container3:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container4:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container5:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container6:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container7:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container8:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container9:hover {
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 6);
+        }
+
+        .container1 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container2 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container3 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container4 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container5 h1 {
+            font-size: 25px;
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container6 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container7 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container8 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .container9 h1 {
+            color: rgb(13, 13, 14);
+            transform: translateY(50PX);
+        }
+
+        .icon {
+            width: 25px;
+            height: 30px;
+            position: fixed;
+            font-size: 25px;
+            transform: translate(1320px, -2200px);
+            cursor: pointer;
+        }
+
+        .button {
+            position: fixed;
+            font-size: 30px;
+            transform: translate(1370px, -2205px);
             border-radius: 10px;
-            background: #e9e8dd;
-            text-align: center;
-            transform: translate(600px, 100px);
+            cursor: pointer;
+            background-color: #5a5959;
+            color: #f8f4f4;
+            background: transparent;
+            border: #5a5959;
         }
 
-        .hidden {
-            display: none;
-            transform: translate(700px, 10px);
+        .button a {
+            text-decoration: none;
+            color: white;
+        }
 
+        .button:hover {
+            background-color: #f60314;
+        }
+
+        .i {
+            color: aliceblue;
+        }
+
+        .home {
+            position: fixed;
+            font-size: 10px;
+            transform: translate(10px, -2200px);
+            cursor: pointer;
+            background-color: #5a5959;
+            border: #5a5959;
+        }
+
+        .home a {
+            transform: translate(10px, 200px);
+            font-size: 25px;
+
+            text-decoration: none;
+            border-radius: 40px;
+            color: white;
+
+        }
+
+        .home a:hover {
+            color: rgb(70, 70, 70);
+        }
+
+        .container5 a {
+            text-decoration: none;
+        }
+
+        .tutorial {
+            position: fixed;
+            transform: translate(100px, -2220px);
+            cursor: pointer;
+        }
+
+        .subject {
+            transform: translate(100px, -2150px);
+            position: fixed;
+        }
+
+        .user_profile {
+            position: fixed;
+            transform: translate(1450px, -2203px);
+            border-radius: 10px;
+            cursor: pointer;
+            border: #5a5959;
+        }
+
+        .user_profile:hover {
+            background-color: #94d445;
+        }
+
+        .profile {
+            display: none;
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            border-color: #08aad7;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 5);
+            transform: translate(1300px, -2150px);
+            background-color: white;
+
+        }
+
+        .information {
+            transform: translateY(10px);
+        }
+
+        .label {
+            transform: translate(20px, 50px);
+            font-size: 30px;
+
+        }
+
+        .input {
+            transform: translate(270px, -125px);
+        }
+
+        .input input {
+            font-size: 30px;
+            border-color: black;
+            border-radius: 10px;
+        }
+
+        .update {
+            font-size: 20px;
+            transform: translate(300px, -30px);
+            border-radius: 10px;
+            cursor: pointer;
+            border: #5a5959;
+        }
+
+        .update:hover {
+            background-color: aqua;
+        }
+
+        .change {
+            display: none;
+            position: fixed;
+            width: 700px;
+            height: 390px;
+            transform: translate(390px, -2000px);
+
+        }
+
+        .forms {
+            transform: translate(2px);
+            width: 700px;
+            box-shadow: 0px 3px 15px;
+            background-color: #e5eae4;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .close-btn {
+            transform: translate(650px);
+            border: #5a5959;
+
+        }
+
+        .close-btn:hover {
+            cursor: pointer;
+        }
+
+        .welcome {
+            width: 300px;
+            height: 80px;
+            position: fixed;
+            color: rgb(254, 251, 251);
+            transform: translate(180px, -2220px);
+            font-size: 20px;
+        }
+
+        .resultbtn {
+            position: fixed;
+            transform: translate(1140px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            border-radius: 10%;
+            font-size: 25px;
+            border: #5a5959;
+        }
+
+        .resultbtn:hover {
+            cursor: pointer;
+            background-color: #1322fe;
+        }
+
+        .exercise {
+            height: 35px;
+            position: fixed;
+            transform: translate(950px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            border-radius: 10%;
+            font-size: 25px;
+
+        }
+
+        .ex {
+            background-color: rgb(103, 101, 101);
+            color: whitesmoke;
+            font-size: 25px;
+            border: #5a5959;
+
+        }
+
+        .ex:hover {
+            cursor: pointer;
+
+        }
+
+        .question {
+            display: none;
+            text-align: left;
+            font-size: 30px;
+            position: fixed;
+            width: 230px;
+            height: 260px;
+            background-color: #f3f5f3;
+            transform: translate(900px, -2165px);
+        }
+
+        .q {
+            transform: translateX(10px);
+            border: #f3f5f3;
+            cursor: pointer;
+        }
+
+        .q a {
+            text-decoration: none;
+        }
+
+        .leaderboard {
+            position: fixed;
+            font-size: 25px;
+            transform: translate(650px, -2200px);
+            background-color: rgb(103, 101, 101);
+            color: #fbfefb;
+            border: #5a5959;
+
+
+        }
+
+        .results {
+            display: none;
+            text-align: left;
+            font-size: 30px;
+            position: fixed;
+            width: 230px;
+            height: 220px;
+            background-color: #f3f5f3;
+            transform: translate(1100px, -2160px);
+        }
+
+        .social_media {
+            display: none;
+            width: 500px;
+            height: 600px;
+            position: fixed;
+            transform: translate(600px, -2090px);
+            background-color: rgb(203, 201, 201);
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0 rgba(255, 255, 255, .5));
+            
+        }
+        .social_media ion-icon{
+            transform: translate(-20px,10px);
+            font-size: 40px;
+            
+        }
+        .social_media i{
+            position: fixed;
+            color: tomato;
+            transform: translate(470px);
         }
     </style>
 </head>
 
-<body>
-    <div class="text" id="tex">
-        <form action="view_result.php" method="post">
-            <a href="subjectchoose.html"></a>
-            <i class="fas fa-times fa-2x text-danger" style="cursor: pointer; transform: translateX(230px);"
-                onclick="closeOpenedWindow()"></i>
-            <h1 style="transform: translateX(-30px);">Enter Roll Number <button
-                    style="font-size: 20px; text-decoration: none; border: none;"><a href="user_information.html"
-                        style="text-decoration: none;" target="_blank">Where</a></button></h1>
+<body id="body1">
+    <div class="tag">
+    </div>
+    <div class="container" id="container">
+        <h1>C </h1>
+        <h1>LANGUAGE</h1>
+    </div>
+    <div class="container1">
+        <h1>JAVA</h1>
+    </div>
+    <div class="container2">
+        <h1>PYTHON</h1>
+    </div>
+    <div class="container3">
+        <h1>NODE JS</h1>
+    </div>
+    <div class="container4">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container5">
+        <a href="computerfundamental.html">
+            <h1>COMPUTER</h1>
+            <h1>FUNDAMENTAL</h1>
+        </a>
+    </div>
+    <div class="container6">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container7">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container8">
+        <h1>REACTJS</h1>
+    </div>
+    <div class="container9" onclick="open_social_media()">
+        <h1>SOCIAL MEDIA</h1>
+    </div>
+    <div class="icon" id="btn1">
+        <span><ion-icon name="moon-outline" class="i" id="iconid"></ion-icon> </span>
+    </div>
+    <div class="but" onclick="closeForm()">
+        <button class="button" onclick="closeForm()" id="power"><ion-icon name="power-outline"></ion-icon></button>
+    </div>
+    <div>
 
-            <input type="text" minlength="10" maxlength="10" onkeypress="return isNumberKey(event)"
-                oninput="validateInput()" name="Roll_Number" style="transform: translateY(30px);">
-            <button type="button" id="get" class="btn btn-primary" onclick="showResults()"
-                style="transform: translate(-100px,200px);" disabled>Get Result</button>
+        <button class="home" id="homeBtn">
+            <a href="subjectchoose.html"><ion-icon name="home-outline"></ion-icon></a>
+        </button>
+    </div>
+    <button class="user_profile" id="user_profile"><ion-icon name="person-circle-outline"
+            style="font-size: 30px; color: rgb(24, 25, 25); "><ion-icon></button>
+    <div class="profile" id="profile">
+
+        <button class="change_password" style="border: none; cursor: pointer;" id="change_password">Change Password
+            <ion-icon name="pencil-outline" style="font-size: 20px; transform: translate(10px);"></ion-icon>
+        </button>
+
+        <button class="information" style="border: none; cursor:pointer;">
+            <button onclick="window.open('user_information.html', '_blank')">User Information</a></button>
+        </button>
+
+    </div>
+    <div class="change" id="formid">
+        <form action="change.php" method="post" class="forms" id="change_form">
+            <div class="close-btn" id="backspace">
+                <ion-icon name="close-outline" style="font-size: 50px;"></ion-icon>
+            </div>
+            <div class="label">
+                <label for="">Old Password</label><br><br>
+                <label for="">New Password</label><br><br>
+                <label for="">confirm Password</label>
+            </div>
+            <div class="input">
+                <input type="password" placeholder="Old Password" name="password" required><br><br>
+                <input type="password" placeholder="New Password" name="new_password" required><br><br>
+                <input type="password" placeholder="confirm Password" name="conform_password" required><br><br>
+            </div>
+            <button type="submit" class="update">UPDATE</button>
         </form>
     </div>
 
-    <h1 id="qu" class="hidden" style="transform: translate(700px,10px);">Quiz Results</h1>
-    <i class="fas fa-times fa-2x text-danger" id="cl"
-        style="cursor: pointer; position: fixed; display: none; transform: translateX(1040px);"
-        onclick="closeOpenedWindow()"></i>
-    <button onclick="generatePDF()" id="pdf" class="hidden btn btn-success"
-        style="transform: translate(1000px,40px); position: fixed;">Download PDF</button>
+    <div class="result">
+        <button id="result" class="resultbtn"><a href="result.html" target="_blank"
+                style="color: #e5eae4;text-decoration: none; ">RESULT</a> </button>
+    </div>
+    <div class="exercise" id="exercise">
+        <button class="ex">EXERCISE</button>
+    </div>
+    <div class="question" id="question">
+        <button class="q"><a href="c_languagequestion.html" target="_blank">C LANGUAGE</a></button><br>
+        <button class="q"><a href="javaquestion.html" target="_blank">JAVA</a></button><br>
+        <button class="q"><a href="pythonquestion.html" target="_blank">PYTHON</a></button><br>
+        <button class="q"><a href="C++question.html" target="_blank">C++</a></button><br>
+        <button class="q"><a href="computerfundametalquestion.html" target="_blank">COMPUTER FUNDAMETAL</a></button><br>
+        <button class="q"><a href="reactjsquestion.html" target="_blank">REACTJS</a></button><br>
+        <button class="q"><a href="nodejsquestion.html" target="_blank">NODEJS</a></button><br>
+    </div>
+    <div class="leaderboards">
+        <button class="leaderboard">LEADERBOARD</button>
+    </div>
+    <div class="welcome">
+        <h2 style="width: 400px;" ;>Welcome, <span id="username"></span>!</h2>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const rol = urlParams.get('Roll_Number');
 
-    <div id="resultsContainer" class="content">
+            if (name) {
+                localStorage.setItem("username", name);
+            }
+            if (rol) {
+                localStorage.setItem("roll_number", rol);
+            }
 
+            const storedName = localStorage.getItem("username");
+            const storedRoll = localStorage.getItem("roll_number");
+
+            if (storedName) {
+                document.getElementById("username").textContent = storedName;
+            }
+        </script>
+    </div>
+    <div class="social_media" id="social_media">
+        <i class="fas fa-times fa-2x text-danger" style="cursor: pointer;" onclick="clos()"></i>
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-instagram"></ion-icon><a href="https://www.instagram.com/" style="text-decoration: none;" target="_blank">INSTAGRAM</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-youtube"></ion-icon><a href="https://www.youtube.com/" style="text-decoration: none;" target="_blank">YOUTUBE</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-facebook"></ion-icon><a href="https://www.facebook.com/" style="text-decoration: none;" target="_blank">FACEBOOK</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-twitter"></ion-icon><a href="https://x.com/?lang=en" style="text-decoration: none;" target="_blank">TWITTER</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-github"></ion-icon><a href="https://x.com/?lang=en" style="text-decoration: none;" target="_blank">GITHUB</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-linkedin"></ion-icon><a href="https://x.com/?lang=en" style="text-decoration: none;" target="_blank">LINKEDIN</a><h1>
+
+        <h1 style="transform: translateX(30px);"><ion-icon name="logo-docker"></ion-icon><a href="https://x.com/?lang=en" style="text-decoration: none;" target="_blank">DOCKER</a><h1>
     </div>
 
     <script>
-        function isNumberKey(evt) {
-            var charCode = evt.which ? evt.which : evt.keyCode;
-            return !(charCode < 48 || charCode > 57);
-        }
+        const container = document.getElementById('container');
+        container.addEventListener("click", () => {
+            open('c_programming.html');
+        });
+    </script>
 
-        function validateInput() {
-            let rollNumber = document.querySelector("input[name='Roll_Number']").value;
-            document.getElementById("get").disabled = rollNumber.length !== 10;
-        }
+    <script>
+        let btn = document.getElementById("iconid");
+        let body1 = document.getElementById("body1");
+        let currentmode = "rgb(218, 223, 224)";
+        btn.addEventListener("click", () => {
+            if (currentmode === "rgb(218, 223, 224)") {
+                body1.style.backgroundColor = "rgb(84, 83, 83)";
+                btn.style.color = "rgb(84, 8, 8)";
+                currentmode = "rgb(84, 83, 83)";
+            }
+            else if (currentmode === "rgb(84, 83, 83)") {
+                body1.style.backgroundColor = "rgb(218, 223, 224)";
+                currentmode = "rgb(218, 223, 224)";
+                btn.style.color = "white";
+            }
 
-        let resultsData = [];
+        });
+    </script>
 
-        function showResults() {
-            document.getElementById('tex').style.display = "none";
-            document.getElementById('cl').style.display = "block";
-            let rollNumber = document.querySelector("input[name='Roll_Number']").value;
+    <script>
+        user_profile = document.getElementById('user_profile');
+        profile = document.getElementById('profile');
+        a = 0;
+        user_profile.addEventListener("click", () => {
+            if (a === 1) {
+                profile.style.display = "none";
+                a = 0;
+            }
+            else if (a == 0) {
+                profile.style.display = "block";
+                a = 1;
+            }
+        });
+    </script>
 
-            fetch("view_result.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "Roll_Number=" + encodeURIComponent(rollNumber)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.success) {
-                        alert(data.message);
-                        window.location.href = "subjectchoose.html";
-                        return;
-                    }
+    <script>
+        back = document.getElementById('backspace');
+        form = document.getElementById('formid');
+        change_password = document.getElementById('change_password');
+        change_password.addEventListener("click", () => {
+            form.style.display = "block";
 
-                    document.getElementById('qu').classList.remove('hidden');
-                    document.getElementById('pdf').classList.remove('hidden');
+        });
+        back.addEventListener("click", () => {
+            form.style.display = "none";
+        });
 
-                    let resultsContainer = document.getElementById("resultsContainer");
-                    resultsContainer.innerHTML = `<h2>Results for ${data.results[0].student_name}</h2>`;
+    </script>
 
-                    let resultHTML = `
-                    <table border="5">
-                        <tr>
-                            <th>Test</th>
-                            <th>student_name</th>
-                            <th>Subject</th>
-                            <th>Total Questions</th>
-                            <th>Attempted</th>
-                            <th>Correct</th>
-                            <th>Wrong</th>
-                            <th>Percentage</th>
-                            <th>Score</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                        </tr>`;
+    <script>
+        exercise = document.getElementById('exercise');
+        question = document.getElementById('question');
+        let timeout;
+        exercise.addEventListener("mouseover", function () {
+            question.style.display = "block";
+        });
+        exercise.addEventListener("mouseout", function () {
+            question.style.display = "none";
+        });
 
-                    resultsData = [];
-                    data.results.forEach((result, index) => {
-                        resultHTML += `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${result.student_name}</td>
-                            <td>${result.subject_name}</td>
-                            <td>${result.total_questions}</td>
-                            <td>${result.attempted}</td>
-                            <td>${result.correct}</td>
-                            <td>${result.wrong}</td>
-                            <td>${result.percentage}%</td>
-                            <td>${result.total_score}</td>
-                            <td>${result.quiz_date}</td>
-                            <td>${result.quiz_time}</td>
-                        </tr>`;
-                        resultsData.push([
-                            index + 1,
-                            result.student_name,
-                            result.subject_name,
-                            result.total_questions,
-                            result.attempted,
-                            result.correct,
-                            result.wrong,
-                            result.percentage + "%",
-                            result.total_score,
-                            result.quiz_date,
-                            result.quiz_time
-                        ]);
-                    });
-
-                    resultHTML += `</table>`;
-                    resultsContainer.innerHTML += resultHTML;
-                })
-                .catch(error => console.error("Error:", error));
-        }
-
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            doc.setFontSize(10);
-            doc.text("Quiz Results", 14, 15);
-
-            doc.autoTable({
-                startY: 25,
-                head: [["Test", "Name", "Subject", "Total Qs", "Attempted", "Correct", "Wrong", "Percentage", "Score", "Date", "Time"]],
-                body: resultsData
-            });
-
-            // let fileName = resultsData.student_name ? resultsData.student_name + ".pdf" : "quiz_results.pdf";
-
-            doc.save(resultsData.student_name + ".pdf");
-        }
+        question.addEventListener("mouseover", function () {
+            question.style.display = "block";
+        });
+        question.addEventListener("mouseout", function () {
+            question.style.display = "none";
+        });
+    </script>
 
     </script>
     <script>
-        let myWindow;
+        document.getElementById("homeBtn").addEventListener("click", function () {
+            const storedName = localStorage.getItem("username");
+            if (storedName) {
+                window.location.href = `subjectchoose.html?name=${encodeURIComponent(storedName)}`;
+            } else {
+                window.location.href = "subjectchoose.html";
+            }
+        });
 
-        function openWindow() {
-            myWindow = window.open("result.html", "_blank",);
-        }
+    </script>
 
-        function closeOpenedWindow() {
+    <script>
+        document.getElementById('power').addEventListener("click", () => {
+            document.getElementById('body1').style.display = "none";
             window.close();
-        }
+            window.open("index.html");
+        })
     </script>
 
 </body>
+<script>
+    function open_social_media(){
+        document.getElementById('social_media').style.display="block";
+    }
+    function clos(){
+        document.getElementById('social_media').style.display="none";
+    }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
