@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>C Language Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: auto;
+            background: yellow;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: red;
+        }
+
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #d0d0d0;
+        }
+
+        .correct {
+            background-color: green !important;
+            color: white;
+        }
+
+        .wrong {
+            background-color: red !important;
+            color: white;
+        }
+
+        #next-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show {
+            display: none;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>Java Language Quiz</h1>
+        <div id="question"></div>
+        <div id="options"></div>
+        <button id="next-button" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <div class="show" id="result-box">
+        <h2>Quiz Result</h2>
+        <i class="fas fa-times fa-2x text-danger" id="cl"
+            style=" color: tomato; cursor: pointer; transform: translate(1370px,-90px); position: fixed;"
+            onclick="closeOpenedWindow()"></i>
+        <input type="text" id="studentName" readonly>
+        <input type="text" id="subjectName" readonly>
+        <input type="text" id="totalQuestions" readonly>
+        <input type="text" id="attempted" readonly>
+        <input type="text" id="correct" readonly>
+        <input type="text" id="wrong" readonly>
+        <input type="text" id="percentage" readonly>
+        <input type="text" id="score" readonly>
+    </div>
+    <div class="welcome">
+        <script>
+            const storedName = localStorage.getItem("username");
+            const storedRoll = localStorage.getItem("roll_number");
+            studentName = storedName;
+            Roll_Number = storedRoll;
+        </script>
+    </div>
+    <script>
+        let allQuestions =
+            [{ "question": "Who invented Java programming?", "options": ["Guido van Rossum", "James Gosling", "Dennis Ritchie", "Bjarne Stroustrup"], "answer": "James Gosling" },
+            { "question": "Who is known as the father of C++?", "options": ["Dennis Ritchie", "Bjarne Stroustrup", "James Gosling", "Guido van Rossum"], "answer": "Bjarne Stroustrup" },
+            { "question": "What is the default access specifier for class members in C++?", "options": ["private", "public", "protected", "none"], "answer": "private" },
+            { "question": "Which keyword is used to create a new object in C++?", "options": ["new", "create", "object", "malloc"], "answer": "new" },
+            { "question": "Which of the following is used for exception handling in C++?", "options": ["throw", "catch", "try", "all of the above"], "answer": "all of the above" },
+            { "question": "Which operator is used to allocate memory dynamically in C++?", "options": ["malloc", "alloc", "new", "calloc"], "answer": "new" },
+            { "question": "What is a constructor in C++?", "options": ["A function that returns a value", "A function to initialize objects", "A function to handle errors", "A type of loop"], "answer": "A function to initialize objects" },
+            { "question": "Which of the following is not a feature of object-oriented programming?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Compilation"], "answer": "Compilation" },
+            { "question": "What does the 'virtual' keyword in C++ indicate?", "options": ["Indicates a function is virtual", "Indicates inheritance", "Indicates abstraction", "Indicates polymorphism"], "answer": "Indicates a function is virtual" },
+            { "question": "What is the result of the expression 5 / 2 in C++?", "options": ["2", "2.5", "5", "3"], "answer": "2" },
+            { "question": "What is the purpose of the 'friend' function in C++?", "options": ["To access private and protected members of a class", "To create an instance of a class", "To make a class inherit from another", "None of the above"], "answer": "To access private and protected members of a class" },
+            { "question": "What does 'std' stand for in C++?", "options": ["Standard", "Stream Data", "System Data", "Standard Device"], "answer": "Standard" },
+            { "question": "Which C++ keyword is used to prevent a class from being inherited?", "options": ["final", "private", "sealed", "static"], "answer": "final" },
+            { "question": "Which of the following is a correct way to define a constant in C++?", "options": ["const int a = 10;", "#define a 10;", "int const a = 10;", "all of the above"], "answer": "all of the above" },
+            { "question": "What is the output of the following code? int a = 10; cout << ++a;", "options": ["9", "10", "11", "error"], "answer": "11" },
+            { "question": "What is the primary purpose of a destructor in C++?", "options": ["To initialize objects", "To free memory and clean up", "To create objects", "None of the above"], "answer": "To free memory and clean up" },
+            { "question": "What is a pure virtual function in C++?", "options": ["A function that has no implementation", "A function that cannot be overridden", "A function that is public", "A function that throws exceptions"], "answer": "A function that has no implementation" },
+            { "question": "What does the 'static' keyword do in C++?", "options": ["It prevents memory allocation", "It makes a function or variable available throughout the program", "It ensures type safety", "It makes the class private"], "answer": "It makes a function or variable available throughout the program" },
+            { "question": "What is the main difference between 'struct' and 'class' in C++?", "options": ["'struct' defaults to private access", "'class' defaults to public access", "'struct' defaults to public access", "'class' defaults to private access"], "answer": "'struct' defaults to public access" },
+            { "question": "What is the purpose of the 'this' pointer in C++?", "options": ["Points to the current instance of the object", "Points to the parent class", "Points to the memory address of the function", "Points to the static member"], "answer": "Points to the current instance of the object" },
+            { "question": "Which of the following is the correct way to initialize a vector in C++?", "options": ["vector<int> v = {1, 2, 3};", "vector v = {1, 2, 3};", "vector<int> v(3);", "None of the above"], "answer": "vector<int> v = {1, 2, 3};" },
+            { "question": "Which of the following is the correct syntax for creating a template function in C++?", "options": ["template <typename T> T func(T a) {}", "template <T> T func(T a) {}", "func<T>(T a) {}", "None of the above"], "answer": "template <typename T> T func(T a) {}" },
+            { "question": "In C++, which operator is used to access a member of a class object?", "options": ["&", "->", "::", "."], "answer": "." },
+            { "question": "What is the purpose of the 'continue' statement in C++?", "options": ["Exit from the loop", "Skip the current iteration and move to the next", "Pause the loop", "None of the above"], "answer": "Skip the current iteration and move to the next" },
+            { "question": "What is the size of 'int' in C++?", "options": ["2 bytes", "4 bytes", "8 bytes", "Varies depending on the system"], "answer": "Varies depending on the system" },
+            { "question": "Which C++ standard library header is needed to use the 'vector' container?", "options": ["<iostream>", "<vector>", "<string>", "<array>"], "answer": "<vector>" },
+            { "question": "Which of the following operators can be overloaded in C++?", "options": ["+ (Addition)", "- (Subtraction)", "[] (Array indexing)", "All of the above"], "answer": "All of the above" },
+            { "question": "What is a function pointer in C++?", "options": ["A pointer that stores the address of a function", "A pointer that points to an array", "A pointer that stores the return type of a function", "None of the above"], "answer": "A pointer that stores the address of a function" },
+            { "question": "What is the difference between 'new' and 'malloc' in C++?", "options": ["'new' initializes the memory while 'malloc' does not", "'new' is for arrays, 'malloc' is for objects", "'new' is slower than 'malloc'", "'new' is used for dynamic memory allocation in arrays only"], "answer": "'new' initializes the memory while 'malloc' does not" },
+            { "question": "What is the main purpose of a template class in C++?", "options": ["To define a class for a specific data type", "To create reusable code for multiple data types", "To store dynamic data", "To manage memory efficiently"], "answer": "To create reusable code for multiple data types" },
+            { "question": "Which of the following is correct for declaring an array in C++?", "options": ["int arr[5];", "int[5] arr;", "array<int> arr(5);", "All of the above"], "answer": "int arr[5];" },
+            { "question": "What does the 'sizeof' operator do in C++?", "options": ["Returns the size of a variable", "Returns the size of a data type", "Both of the above", "None of the above"], "answer": "Both of the above" },
+            { "question": "Which type of loop is guaranteed to execute at least once in C++?", "options": ["while", "for", "do-while", "None of the above"], "answer": "do-while" },
+            { "question": "What does the 'inline' keyword do in C++?", "options": ["It tells the compiler to insert the code of the function directly", "It tells the compiler to create a copy of the function", "It prevents function overloading", "None of the above"], "answer": "It tells the compiler to insert the code of the function directly" },
+            { "question": "Which of the following is true about 'virtual' functions in C++?", "options": ["They are used for function overloading", "They can be overridden in derived classes", "They can only be called from base classes", "None of the above"], "answer": "They can be overridden in derived classes" },
+            { "question": "What is a destructor in C++?", "options": ["A function that initializes the object", "A function that destroys the object", "A function that is called after main()", "A function that calls the constructor"], "answer": "A function that destroys the object" },
+            { "question": "Which of the following is an example of a polymorphic behavior in C++?", "options": ["Function overloading", "Operator overloading", "Method overriding", "All of the above"], "answer": "All of the above" },
+            { "question": "Which header file is required for input/output operations in C++?", "options": ["<inputoutput>", "<iostream>", "<iostream.h>", "<stdio.h>"], "answer": "<iostream>" },
+            { "question": "What is the main advantage of using 'const' with pointers in C++?", "options": ["To make sure the pointer cannot change the address", "To prevent the pointer from pointing to null", "To make the pointer type safe", "To prevent the pointer value from changing"], "answer": "To make sure the pointer cannot change the address" },
+            { "question": "Which C++ concept allows a derived class to inherit features from a base class?", "options": ["Abstraction", "Encapsulation", "Polymorphism", "Inheritance"], "answer": "Inheritance" },
+            { "question": "What is a static function in C++?", "options": ["A function that is restricted to the class scope", "A function that can be called without an object", "A function that is inherited", "None of the above"], "answer": "A function that can be called without an object" },
+            { "question": "Which of the following is used to allocate memory for an array dynamically?", "options": ["malloc", "new", "calloc", "None of the above"], "answer": "new" },
+            { "question": "What is the role of 'namespace' in C++?", "options": ["To define the scope of variables and functions", "To create an alias for a class", "To define a class", "None of the above"], "answer": "To define the scope of variables and functions" },
+            { "question": "Which of the following is true about multi-threading in C++?", "options": ["It improves the performance of a program", "It allows for concurrent execution of code", "It is supported by the C++ standard library", "All of the above"], "answer": "All of the above" },
+            { "question": "What is the difference between 'public' and 'private' members of a class in C++?", "options": ["'public' members are accessible from outside the class, 'private' are not", "'private' members are accessible from outside the class, 'public' are not", "Both are accessible from outside the class", "None of the above"], "answer": "'public' members are accessible from outside the class, 'private' are not" }
+
+            ];
+        let questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 25);
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let attempted = 0;
+        let correct = 0;
+        let wrong = 0;
+        let subjectName = "C++ LANGUAGE";
+        function loadQuestion() {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('question').innerHTML = `Q${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+
+            let optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+
+            let shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
+
+            shuffledOptions.forEach(option => {
+                let optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerText = option;
+                optionElement.onclick = () => selectOption(optionElement, option);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            document.getElementById('next-button').style.display = 'none';
+        }
+
+        function selectOption(element, selectedOption) {
+            let currentQuestion = questions[currentQuestionIndex];
+            document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
+            attempted++;
+            if (selectedOption === currentQuestion.answer) {
+                correct++;
+                score += 10;
+                element.classList.add('correct');
+            }
+            else {
+                wrong++;
+                element.classList.add('wrong');
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.innerText === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            document.getElementById('next-button').style.display = 'block';
+        }
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) loadQuestion();
+            else {
+                saveResult();
+                showResult();
+
+            }
+        }
+        function saveResult() {
+            let percentage = (correct / questions.length) * 100;
+
+            fetch('save_result.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    student_name: studentName,
+                    subject_name: subjectName,
+                    total_questions: questions.length,
+                    attempted: attempted,
+                    correct: correct,
+                    wrong: wrong,
+                    percentage: percentage.toFixed(2),
+                    total_score: score,
+                    Roll_Number: Roll_Number
+                })
+            })
+        }
+        function showResult() {
+            let percentage = (correct / questions.length) * 100;
+            document.getElementById('studentName').value = "Student Name: " + studentName;
+            document.getElementById('subjectName').value = "Subject: " + subjectName;
+            document.getElementById('totalQuestions').value = "Total Questions: " + questions.length;
+            document.getElementById('attempted').value = "Attempted: " + attempted;
+            document.getElementById('correct').value = "Correct: " + correct;
+            document.getElementById('wrong').value = "Wrong: " + wrong;
+            document.getElementById('percentage').value = "Percentage: " + percentage.toFixed(2) + "%";
+            document.getElementById('score').value = "Score: " + score;
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.getElementById('result-box').style.display = 'block';
+
+        }
+        loadQuestion();
+    </script>
+    <script>
+        let myWindow;
+
+        function openWindow() {
+            myWindow = window.open("result.html", "_blank",);
+        }
+
+        function closeOpenedWindow() {
+            window.close();
+        }
+    </script>
+</body>
+
+</html>
